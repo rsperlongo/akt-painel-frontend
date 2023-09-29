@@ -19,4 +19,4 @@ const routes: Routes = [
     ]
 })
 
-export class DashbordRoutingModule {}
+export class DashboardRoutingModule {}
