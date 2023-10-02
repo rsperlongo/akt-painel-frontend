@@ -1,1 +1,7 @@
 @import "../../styles.scss";
+@import "../../variables";
+
+h1 {
+    font-size: 28px;
+    color: $default;
+  }
