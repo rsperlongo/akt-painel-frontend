@@ -1,0 +1,20 @@
+@import "../../../styles.scss";
+
+.title-menu {
+    font-size: 18px;
+    margin-top: 30px;
+    font-weight: bold;
+    color: $default;
+}
+
+.accordion-item {
+    border-radius: 0 !important;
+}
+
+.accordion-header {
+    border-radius: 0 !important;
+}
+
+.accordion-button {
+    border-radius: 0 !important;
+}

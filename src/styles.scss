@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+$default: #093a5e;
+$title: #020e33;
+
+h2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(8, 65, 119);
+}
+
+.card {
+    border: solid 1px rgba(212, 211, 224, 0.664);
+    border-radius: 0;
+    box-shadow: 0 0.5rem 1rem rgb(240, 231, 231);
+    height: fit-content;
+    background-color: white;
+}
+
+.form-control {
+    border-radius: 0;
+    border: solid 1px black;
+  }
+  
+  .btn {
+    border-radius: 0;
+  }
+
+/* Importing Bootstrap SCSS file. */
+// @import 'bootstrap/scss/bootstrap';
