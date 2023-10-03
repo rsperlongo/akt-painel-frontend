@@ -1,29 +1,40 @@
-<div class="vh-100 d-flex justify-content-center align-items-center">
-    <div class="container">
-        <div class="row d-flex justify-content-center">
-        <div class="col-4">
-          <div class="card bg-white">
-            <div class="card-body p-5">
-              <form class="mb-3 mt-md-4">
-                <h2 class="fw-bold mb-2 text-uppercase ">Welcome</h2>
-                <div class="alert alert-warning" role="alert">
-                <strong>Atenção !</strong> Entre com seu login e senha! 
+<div class="vh-100 d-flex justify-content-center align-items-center bg-body-secondary bg-gradient">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-4">
+        <div class="card bg-white">
+          <div class="card-body p-5">
+            <form [formGroup]="form" (ngSubmit)="login()" class="mb-3 mt-md-4">
+              <h2 class="fw-bold mb-2 text-uppercase ">Welcome</h2>
+              <div class="alert alert-warning" role="alert">
+                <strong>Atenção !</strong> Entre com seu login e senha!
+              </div>
+              <div class="mb-3">
+                <label for="text" class="form-label fw-bold ">Usuário</label>
+                <input type="text" formControlName="username" class="form-control" id="username"
+                  placeholder="Digite seu usuário" alt="Usuário" required>
+                <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger mt-1">
+                  Campo Obrigatório
                 </div>
-                <div class="mb-3">
-                  <label for="text" class="form-label fw-bold ">Usuário</label>
-                  <input type="text" class="form-control" id="username" placeholder="Digite seu usuário" alt="Usuário">
-                </div>
-                <div class="mb-3">
-                  <label for="password" class="form-label fw-bold ">Senha</label>
-                  <input type="password" class="form-control" id="password" placeholder="*******">
-                </div>
-                <div class="d-grid">
-                  <button class="btn btn-info" type="submit">Login</button>
-                </div>
-              </form>
-            </div>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label fw-bold ">Senha</label>
+                <input type="password" formControlName="password" class="form-control" id="password" placeholder="*******">
+              </div>
+              <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                                    class="alert alert-danger mt-1">Campo senha obrigatório
+                                </div>
+                                <div *ngIf="password.errors?.['minlength']"
+                                    class="alert alert-danger mt-1">
+                                    Senha deve ter pelo menos 4 caracteres.
+                                </div>
+              <div class="d-grid">
+                <button [disabled]="form.invalid" class="btn btn-info fw-bold" style="color: white; font-size: 20px;" type="submit">LOGIN</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
