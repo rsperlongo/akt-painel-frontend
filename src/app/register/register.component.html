@@ -26,43 +26,42 @@
                             <p>SELECIONE UM TIPO: USUÁRIO/OPERADOR/ADMINISTRADOR</p>
 
                         </div>
-                        <form>
+                        <form [formGroup]="registerForm" (ngSubmit)="register()">
                             <div class="mb-3">
                                 <label class="form-label">Nome</label>
-                                <input type="text" formControlName="" class="form-control" />
+                                <input type="text" formControlName="name" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Usuário</label>
-                                <input type="text" formControlName="" class="form-control" />
+                                <input type="text" formControlName="username" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Senha</label>
-                                <input type="password" formControlName="" class="form-control" />
+                                <input type="password" formControlName="password" class="form-control" />
                             </div>
                             <div class="mb-4">
                                 <label class="form-label">Número Final</label>
-                                <input type="text" formControlName="" class="form-control" />
+                                <input type="text" formControlName="finalNumber" class="form-control" />
                             </div>
                             <div class="mb-5">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option value="1">Atendente</option>
-                                    <option value="2">Operador</option>
-                                    <option value="3">Administrador</option>
-                                  </select>
+                                <select id="Roles" formControlName="roles" class="form-select"
+                                    aria-label="Escolha um tipo">
+                                    <option *ngFor="let roles of eRoles | keyvalue" [ngValue]="roles.value">{{
+                                        roles.value }}</option>
+                                </select>
                             </div>
                             <div>
                                 <div class="row justify-content-start">
                                     <div class="col-2">
                                         <button [disabled]="loading" class="btn btn-info btn-lg">
-                                            <span *ngIf="loading"
-                                                class="spinner-border spinner-border-sm me-1"></span>
-                                                <span class="fw-normal text-nowrap">
-                                                    <i class="fa-brands fa-wpforms me-2"></i>
-                                                </span>
-                                                Registrar
+                                            <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                                            <span class="fw-normal text-nowrap">
+                                                <i class="fa-brands fa-wpforms me-2"></i>
+                                            </span>
+                                            Registrar
                                         </button>
                                     </div>
-                                    
+
                                     <div class="col-2">
                                         <button class="btn btn-primary btn-lg">
                                             <span class="fw-normal text-nowrap">
@@ -71,7 +70,7 @@
                                             Limpar
                                         </button>
                                     </div>
-                                    
+
                                     <div class="col-2">
                                         <button class="btn btn-secondary btn-lg">
                                             <span class="fw-normal text-nowrap">

@@ -36,10 +36,10 @@ export class UsersComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
 
     this.form = this.formBuilder.group({
-      name: ['', Validators.required],
-      username: [''],
+      name: ['', [Validators.required]],
+      username: ['', [Validators.required]],
       password: ['', [Validators.minLength(4)]],
-      finalNumber: [''],
+      finalNumber: ['', [Validators.required]],
       roles: ['', Validators.required]
     }); 
 

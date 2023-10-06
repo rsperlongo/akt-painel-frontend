@@ -4,15 +4,23 @@ import { AuthService } from '../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
 
+enum Roles {
+  ADMIN = 'Admintrador',
+  OPERATOR = 'Operador',
+  ATTENDANT = 'Atendente'
+}
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
+
 export class RegisterComponent {
   registerForm!: FormGroup;
   loading = false;
   submitted = false;
+  eRoles = Roles;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,10 +32,10 @@ export class RegisterComponent {
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       name: [''],
-      username: ['', Validators.required],
+      username: ['', [Validators.required]],
       password: ['', [Validators.minLength(4)]],
-      finalNumber: ['', Validators.required],
-      roles: ['', Validators.required]
+      finalNumber: ['', [Validators.required]],
+      roles: [null , [Validators.required]]
     });
   }
 
