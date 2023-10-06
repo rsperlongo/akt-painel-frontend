@@ -63,7 +63,7 @@ export class AuthService {
     finalNumber: string,
     roles: string,
 
-  ): Observable<any> {
+  ): Observable<User> {
     return this.http.post(
       `${environment.apiUrl}/auth/register`,
       { 

@@ -56,7 +56,7 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  get f() { return this.form.controls as unknown as AbstractControl; }
+  get f() { return this.form.controls; }
 
   get name() {
     return this.form.get('name');
@@ -102,7 +102,7 @@ export class UsersComponent implements OnInit {
   private saveUser() {
     return this.id
         ? this.usersService.update(this.id!, this.form.value)
-        : this.authService.register(this.username.value, this.password.value, this.finalNumber.value, this.roles.value, this.name?.value);
+        : this.authService.register(this.name?.value, this.username.value, this.password.value, this.finalNumber.value, this.roles.value );
   }
 
   deleteUser(id: string) {

@@ -71,7 +71,7 @@ export class RegisterComponent {
     .pipe(first())
     .subscribe({
       next:() => {
-        this.router.navigate(['login'], { relativeTo: this.route })
+        this.router.navigate(['/users'], { relativeTo: this.route })
       },
       error: error => {
         this.loading = false
