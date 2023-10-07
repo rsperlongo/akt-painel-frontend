@@ -43,7 +43,7 @@ export class UsersComponent implements OnInit {
       roles: ['', Validators.required]
     }); 
 
-    this.title = 'Add User';
+    this.title = 'Formulário de Cadastro';
     if (this.id) {
         this.title = 'Edit User';
         this.loading = true;
@@ -92,9 +92,6 @@ export class UsersComponent implements OnInit {
             next: () => {
                 this.router.navigateByUrl('/users');
             },
-            error: error => {
-                this.submitting = false;
-            }
         })
          
   }
@@ -112,4 +109,5 @@ export class UsersComponent implements OnInit {
         .pipe(first())
         .subscribe(() => this.users = this.users!.filter((x: any) => x.id !== id));
   }
+
 }

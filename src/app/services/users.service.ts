@@ -4,8 +4,12 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { User } from '../models';
 import { TokenService } from './token.service';
 import jwt_decode from 'jwt-decode';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, map } from 'rxjs';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+};
 
 @Injectable({
   providedIn: 'root'
@@ -52,34 +56,32 @@ export class UsersService {
   }
 
   getById(id: string) {
-    return this.http.get<User>(`${environment.apiUrl}/${id}`);
+    return this.http.get<User>(`${environment.apiUrl}/users/${id}`)
   }
 
-  update(id: string, params: any) {
-    return this.http.put(`${environment.apiUrl}/${id}`, params).pipe(
-      map((x) => {
-        if (id == this.userValue?.id) {
-          const user = { ...this.userValue, ...params };
+  update(id: string, data: any): Observable<any> {
+    return this.http.put(`${environment.apiUrl}/users/${id}`, data)
+    .pipe(map(x => {
+      // update stored user if the logged in user updated their own record
+      if (id == this.userValue?.id) {
+          // update local storage
+          const user = { ...this.userValue, ...data };
           localStorage.setItem('user', JSON.stringify(user));
 
+          // publish updated user to subscribers
           this.userSubject.next(user);
-        }
-        return x;
-      })
-    );
+      }
+      return x;
+  }));
   }
 
   delete(id: string) {
     return this.http.delete(`${environment.apiUrl}/users/${id}`)
-        .pipe(map(x => {
-            if (id == this.userValue?.id) {
-                this.logout();
-            }
-            return x;
-        }));
-}
-
-  
-
-
+      .pipe(map(x => {
+        if (id == this.userValue?.id) {
+          this.logout();
+        }
+        return x;
+      }));
+  }
 }

@@ -4,4 +4,5 @@
     username?: string;
     password?: string;
     finalNumber?: string;
+    roles?: string;
 }
