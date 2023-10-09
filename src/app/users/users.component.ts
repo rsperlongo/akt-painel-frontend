@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../services/users.service';
 import { AuthService } from '../services/auth.service';
 import { first } from 'rxjs';
+import { User } from '../models';
 
 @Component({
   selector: 'app-users',
@@ -11,6 +12,17 @@ import { first } from 'rxjs';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
+  @Input() viewMode = false;
+
+    @Input() currentUser: User = {
+        id: '',
+        name: '',
+        username: '',
+        password: '',
+        finalNumber: '',
+        roles: '',
+    }
+
   users?: any;
   content: any;
   form!: FormGroup;
@@ -43,7 +55,7 @@ export class UsersComponent implements OnInit {
       roles: ['', Validators.required]
     }); 
 
-    this.title = 'Add User';
+    this.title = 'Formulário de Cadastro';
     if (this.id) {
         this.title = 'Edit User';
         this.loading = true;
@@ -56,7 +68,7 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  get f() { return this.form.controls as unknown as AbstractControl; }
+  get f() { return this.form.controls; }
 
   get name() {
     return this.form.get('name');
@@ -92,9 +104,6 @@ export class UsersComponent implements OnInit {
             next: () => {
                 this.router.navigateByUrl('/users');
             },
-            error: error => {
-                this.submitting = false;
-            }
         })
          
   }
@@ -102,7 +111,7 @@ export class UsersComponent implements OnInit {
   private saveUser() {
     return this.id
         ? this.usersService.update(this.id!, this.form.value)
-        : this.authService.register(this.username.value, this.password.value, this.finalNumber.value, this.roles.value, this.name?.value);
+        : this.authService.register(this.name?.value, this.username.value, this.password.value, this.finalNumber.value, this.roles.value );
   }
 
   deleteUser(id: string) {
@@ -112,4 +121,5 @@ export class UsersComponent implements OnInit {
         .pipe(first())
         .subscribe(() => this.users = this.users!.filter((x: any) => x.id !== id));
   }
+
 }
