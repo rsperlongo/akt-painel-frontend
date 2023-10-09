@@ -24,6 +24,10 @@ const routes: Routes = [
     loadChildren: () => import('./operators/operators.module').then(m => m.OperatorsModule),
   },
   {
+    path: 'attendant',
+    loadChildren: () => import('./attendant/attendant.module').then(m => m.AttendantModule),
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'login'
