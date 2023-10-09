@@ -20,6 +20,10 @@ const routes: Routes = [
     loadChildren: () => import('./register/register.module').then(m => m.RegisterModule),
   },
   {
+    path: 'operators',
+    loadChildren: () => import('./operators/operators.module').then(m => m.OperatorsModule),
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'login'
