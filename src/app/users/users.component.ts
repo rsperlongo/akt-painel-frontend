@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../services/users.service';
 import { AuthService } from '../services/auth.service';
 import { first } from 'rxjs';
+import { User } from '../models';
 
 @Component({
   selector: 'app-users',
@@ -11,6 +12,17 @@ import { first } from 'rxjs';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
+  @Input() viewMode = false;
+
+    @Input() currentUser: User = {
+        id: '',
+        name: '',
+        username: '',
+        password: '',
+        finalNumber: '',
+        roles: '',
+    }
+
   users?: any;
   content: any;
   form!: FormGroup;
