@@ -1,3 +1,4 @@
+import { InvoiceComponent } from './invoice/invoice.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -26,6 +27,14 @@ const routes: Routes = [
   {
     path: 'attendant',
     loadChildren: () => import('./attendant/attendant.module').then(m => m.AttendantModule),
+  },
+  {
+    path: 'invoice',
+    loadChildren: () => import('./invoice/invoice.module').then(m => m.InvoiceModule),
+  },
+  {
+    path: 'pix',
+    loadChildren: () => import('./pix/pix.module').then(m => m.PixModule),
   },
   {
     path: '',
