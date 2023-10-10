@@ -37,6 +37,10 @@ const routes: Routes = [
     loadChildren: () => import('./pix/pix.module').then(m => m.PixModule),
   },
   {
+    path: 'payment-config',
+    loadChildren: () => import('./payment-config/payment-config.module').then(m => m.PaymentConfigModule),
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'login'
