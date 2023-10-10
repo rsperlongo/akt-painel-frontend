@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { RouterLink } from '@angular/router';
+import { provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -18,9 +19,9 @@ import { RouterLink } from '@angular/router';
     HttpClientModule,
     RouterLink,
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
-  providers: [],
+  providers: [provideNgxMask()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

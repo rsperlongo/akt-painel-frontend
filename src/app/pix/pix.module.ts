@@ -5,6 +5,7 @@ import { PixRoutingModule } from './pix-routing.module';
 import { RouterLink } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 
 
@@ -18,7 +19,9 @@ import { SharedModule } from '../shared/shared.module';
     RouterLink,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    NgxMaskDirective,
+    NgxMaskPipe
   ]
 })
 export class PixModule { }

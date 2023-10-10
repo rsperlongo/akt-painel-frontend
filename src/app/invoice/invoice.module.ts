@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { InvoiceRoutingModule } from './invoice-routing.module';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 
 
@@ -19,7 +20,9 @@ import { InvoiceRoutingModule } from './invoice-routing.module';
     RouterLink,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
-  ]
+    SharedModule,
+    NgxMaskDirective,
+    NgxMaskPipe
+  ],
 })
 export class InvoiceModule { }
