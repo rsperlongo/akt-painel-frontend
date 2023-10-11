@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'environment/environment';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { User } from '../models';
+import { Router } from '@angular/router';
 
 const API = environment.apiUrl;
 
@@ -46,10 +47,6 @@ export class AuthService {
         })
       );
 
-  }
-
-  logout() {
-    this.isLoggedIn = false;
   }
 
   public get userValue() {

@@ -1,3 +1,4 @@
+import { AuthGuardService } from './services/auth-guard.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -21,7 +22,7 @@ import { provideNgxMask } from 'ngx-mask';
     NgbModule,
     FontAwesomeModule,
   ],
-  providers: [provideNgxMask()],
+  providers: [provideNgxMask(), AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

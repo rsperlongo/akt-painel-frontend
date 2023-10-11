@@ -1,6 +1,9 @@
 import { InvoiceComponent } from './invoice/invoice.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { 
+  AuthGuardService as AuthGuard 
+} from './services/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -10,7 +13,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
-    canActivate: []
+    canActivate: [AuthGuard]
   },
   {
     path: 'users',
