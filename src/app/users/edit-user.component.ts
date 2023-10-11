@@ -17,7 +17,7 @@ enum Roles {
 export class EditUserComponent implements OnInit {
     @Input() viewMode = false;
 
-    @Input() currentUser: User = {
+    @Input() user: User = {
         id: '',
         name: '',
         username: '',
@@ -63,10 +63,10 @@ export class EditUserComponent implements OnInit {
         }
     }
 
-    getUser(id: string) {
+    getUser(id: string, data: any) {
     this.usersService.getById(id)
       .pipe(first()) 
-      .subscribe(user => this.currentUser = user);
+      .subscribe(user => this.user = user);
       }
 
     get f() { return this.form.controls; }
