@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { environment } from 'environment/environment';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { User } from '../models';
-import { Router } from '@angular/router';
 
 const API = environment.apiUrl;
 
@@ -11,12 +10,19 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
+export const ROLES = {
+  ADMIN : 'Admin',
+  OPERATOR : 'Operador',
+  ATTENDANT : 'Atendente'
+}
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   isLoggedIn = false;
+  userRole = ROLES.ADMIN;
 
   private userSubject: BehaviorSubject<User | null>;
   public user: Observable<User | null>;
@@ -26,6 +32,10 @@ export class AuthService {
       JSON.parse(localStorage.getItem('user')!)
     );
     this.user = this.userSubject.asObservable();
+  }
+
+  hasRole(role: string): boolean {
+    return this.userRole === role
   }
 
   authenticate(username: string, password: string) {

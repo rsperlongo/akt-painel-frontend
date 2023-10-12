@@ -5,6 +5,7 @@ import { operatorsRoutingModule } from './operators-routing.module';
 import { RouterLink } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { SidebarOperatorComponent } from '../components/sidebar/sidebar-operator.component';
 
 
 
