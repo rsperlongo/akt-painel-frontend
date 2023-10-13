@@ -24,6 +24,7 @@ export class AuthService {
   isLoggedIn = false;
   userRole = ROLES.ADMIN;
 
+
   private userSubject: BehaviorSubject<User | null>;
   public user: Observable<User | null>;
 
@@ -51,6 +52,7 @@ export class AuthService {
       .pipe(
         map((user) => {
           localStorage.setItem('user', JSON.stringify(user));
+          localStorage.setItem('ROLES', '')
           this.userSubject.next(null);
           this.isLoggedIn = true;
           return user;

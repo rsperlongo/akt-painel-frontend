@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../components/header/header.component';
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
 import { RouterLink } from '@angular/router';
+import { SidebarAttendantComponent } from '../components/sidebar/sidebar-attendant.component';
 
 
 
@@ -11,12 +12,13 @@ import { RouterLink } from '@angular/router';
   declarations: [ 
     HeaderComponent, 
     SidebarComponent,
-    SidebarOperatorComponent
+    SidebarOperatorComponent,
+    SidebarAttendantComponent
   ],
   imports: [
     CommonModule,
     RouterLink
   ],
-  exports: [ HeaderComponent, SidebarComponent, SidebarOperatorComponent ]
+  exports: [ HeaderComponent, SidebarComponent, SidebarOperatorComponent, SidebarAttendantComponent ]
 })
 export class SharedModule { }

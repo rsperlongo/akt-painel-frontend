@@ -1,3 +1,4 @@
+import { ROLES } from './../services/auth.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
 
+  userRoleAdmin = ROLES.ADMIN;
+  userRoleOperator = ROLES.OPERATOR;
+  userRoleAttendant = ROLES.ATTENDANT;
 }
