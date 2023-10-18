@@ -5,6 +5,7 @@ import { LoginRoutingModule } from './login.routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { InvoiceService } from '../services/invoice.service';
 
 
 
@@ -19,6 +20,7 @@ import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     HttpClientModule,
     NgbAlertModule
-  ]
+  ],
+  providers: []
 })
 export class LoginModule { }

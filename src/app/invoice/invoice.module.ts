@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { InvoiceRoutingModule } from './invoice-routing.module';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { InvoiceService } from '../services/invoice.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -22,7 +24,9 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     ReactiveFormsModule,
     SharedModule,
     NgxMaskDirective,
-    NgxMaskPipe
+    NgxMaskPipe,
+    HttpClientModule
   ],
+  providers: [InvoiceService]
 })
 export class InvoiceModule { }

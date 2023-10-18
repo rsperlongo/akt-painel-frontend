@@ -39,8 +39,6 @@ const routes: Routes = [
     path: 'operators',
     component: OperatorsComponent,
     loadChildren: () => import('./operators/operators.module').then(m => m.OperatorsModule),
-    canActivate: [RoleGuard],
-    data: { role: ROLES.OPERATOR  }
   },
   {
     path: 'attendant',
