@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { OperatorsComponent } from './operators/operators.component';
 import { AttendantComponent } from './attendant/attendant.component';
 import { OperatorGuard } from './services/operator.guard';
+import { AttendantGuard } from './services/attendant.guard';
 
 const routes: Routes = [
   {
@@ -27,14 +28,14 @@ const routes: Routes = [
     path: 'users',
     component: UsersComponent,
     loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
-    canActivate: [RoleGuard],
-    data: { role: ROLES.ADMIN  }
+    canActivate: [RoleGuard ],
+    data: { role: ROLES.ADMIN }
   },
   {
     path: 'users/register',
     component: RegisterComponent,
     loadChildren: () => import('./register/register.module').then(m => m.RegisterModule),
-    canActivate: [AdminGuard],
+    canActivate: [RoleGuard],
     data: { role: ROLES.ADMIN }
   },
   {
@@ -42,14 +43,12 @@ const routes: Routes = [
     component: OperatorsComponent,
     loadChildren: () => import('./operators/operators.module').then(m => m.OperatorsModule),
     canActivate: [RoleGuard],
-    data: { role: ROLES.ADMIN || ROLES.OPERATOR }
+    data: { role: ROLES.OPERATOR  }
   },
   {
     path: 'attendant',
     component: AttendantComponent,
     loadChildren: () => import('./attendant/attendant.module').then(m => m.AttendantModule),
-    canActivate: [AdminGuard],
-    data: { role: ROLES.ADMIN }
   },
   {
     path: 'invoice',

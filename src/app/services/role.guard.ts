@@ -7,9 +7,9 @@ export class RoleGuard  {
   authService = inject(AuthService);
   router = inject(Router);
 
-  canActivate(route: ActivatedRouteSnapshot): boolean | UrlTree {
+  canActivate(route: ActivatedRouteSnapshot): boolean | UrlTree | Promise<boolean> {
     // Get the role from the route data
-    const {role} = route.data;
+    const role = route.data["role"];
     const hasAccess = this.authService.hasRole(role);
     return hasAccess ? true : this.router.createUrlTree(['/unauthorized']);
   }
