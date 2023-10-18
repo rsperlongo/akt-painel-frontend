@@ -13,7 +13,7 @@
                         <li class="breadcrumb-item active" aria-current="page">Atualização de Usuário</li>
                     </ol>
                 </nav>
-                <div *ngIf="currentUser" >
+                <div *ngIf="user" >
                     <div class="card mt-4">
                         <div class="card-body">
                             <h5 class="card-title mb-4">
@@ -29,22 +29,22 @@
                             <form [formGroup]="form" (ngSubmit)="onSubmit()">
                                 <div class="mb-3">
                                     <label class="form-label">Nome</label>
-                                    <input id="name" type="text" formControlName="name" class="form-control"/>
+                                    <input id="name" type="text" [(ngModel)]="user.name" class="form-control"/>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Usuário</label>
-                                    <input type="text" formControlName="username" class="form-control" />
+                                    <input id="username"  type="text" [(ngModel)]="user.username" class="form-control" />
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Senha</label>
-                                    <input type="password" formControlName="password" class="form-control"  />
+                                    <input id="password" type="password" [(ngModel)]="user.password"  class="form-control"  />
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Número Final</label>
-                                    <input type="text" formControlName="finalNumber" class="form-control"  />
+                                    <input id="finalNumber"  type="text" [(ngModel)]="user.finalNumber"  class="form-control"  />
                                 </div>
                                 <div class="mb-5">
-                                    <select id="Roles" formControlName="roles" class="form-select"
+                                    <select id="roles" formControlName="roles" class="form-select"
                                         aria-label="Escolha um tipo">
                                         <option *ngFor="let roles of eRoles  | keyvalue" [ngValue]="roles.value">{{
                                             roles.value }}</option>

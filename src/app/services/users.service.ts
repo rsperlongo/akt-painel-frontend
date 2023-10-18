@@ -61,18 +61,18 @@ export class UsersService {
 
   update(id: string, data: any): Observable<any> {
     return this.http.put(`${environment.apiUrl}/users/${id}`, data)
-    .pipe(map(x => {
-      // update stored user if the logged in user updated their own record
-      if (id == this.userValue?.id) {
+      .pipe(map(x => {
+        // update stored user if the logged in user updated their own record
+        if (id == this.userValue?.id) {
           // update local storage
           const user = { ...this.userValue, ...data };
           localStorage.setItem('user', JSON.stringify(user));
 
           // publish updated user to subscribers
           this.userSubject.next(user);
-      }
-      return x;
-  }));
+        }
+        return x;
+      }));
   }
 
   delete(id: string) {

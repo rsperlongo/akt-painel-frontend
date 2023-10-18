@@ -29,7 +29,7 @@ export class RegisterComponent {
     private route: ActivatedRoute,
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
       name: [''],
       username: ['', [Validators.required]],
@@ -39,7 +39,7 @@ export class RegisterComponent {
     });
   }
 
-  get f() { return this.registerForm.controls; }
+  get f() { return this.registerForm.controls as unknown as AbstractControl }
 
   get name() {
     return this.registerForm.get('name')!;
