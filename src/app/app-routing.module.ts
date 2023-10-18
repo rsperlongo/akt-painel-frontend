@@ -4,15 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { 
   AuthGuardService as AuthGuard 
 } from './services/auth-guard.service';
-import { AdminGuard } from './services/admin.guard';
 import { ROLES } from './services/auth.service';
 import { RoleGuard } from './services/role.guard';
 import { UsersComponent } from './users/users.component';
 import { RegisterComponent } from './register/register.component';
 import { OperatorsComponent } from './operators/operators.component';
 import { AttendantComponent } from './attendant/attendant.component';
-import { OperatorGuard } from './services/operator.guard';
-import { AttendantGuard } from './services/attendant.guard';
 
 const routes: Routes = [
   {
