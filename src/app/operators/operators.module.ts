@@ -5,8 +5,6 @@ import { operatorsRoutingModule } from './operators-routing.module';
 import { RouterLink } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
-import { SidebarOperatorComponent } from '../components/sidebar/sidebar-operator.component';
-import { InvoiceService } from '../services/invoice.service';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -24,6 +22,6 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     HttpClientModule
   ],
-  providers: [InvoiceService]
+  providers: []
 })
 export class OperatorsModule { }

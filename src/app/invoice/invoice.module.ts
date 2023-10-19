@@ -5,8 +5,7 @@ import { RouterLink } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { InvoiceRoutingModule } from './invoice-routing.module';
-import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
-import { InvoiceService } from '../services/invoice.service';
+import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -27,6 +26,6 @@ import { HttpClientModule } from '@angular/common/http';
     NgxMaskPipe,
     HttpClientModule
   ],
-  providers: [InvoiceService]
+  providers: []
 })
 export class InvoiceModule { }

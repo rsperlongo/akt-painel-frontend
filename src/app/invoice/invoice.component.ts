@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { InvoiceService } from '../services/invoice.service';
 
 @Component({
   selector: 'app-invoice',
@@ -17,7 +16,6 @@ export class InvoiceComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private invoiceService: InvoiceService
   ) {}
 
   ngOnInit(): void {
@@ -50,29 +48,5 @@ export class InvoiceComponent implements OnInit {
 
   get descricao() {
     return this.invoiceForm.get('descricao')!;
-  }
-
-  getInvoice() {
-    this.submitted = true;
-    // stop here if form is invalid
-    if (this.invoiceForm.invalid) {
-      return;
-    }
-    this.loading = true;
-    this.invoiceService.generateInvoice(
-      this.nomeCliente.value, 
-      this.valor.value, 
-      this.dataVencimento.value,
-      this.cpfCnpj.value,
-      this.descricao.value,
-      )
-      .subscribe({
-        next:() => {
-          this.router.navigate(['/operators'])
-        },
-        error: error => {
-          this.loading = false;
-        }
-      })
   }
 }
