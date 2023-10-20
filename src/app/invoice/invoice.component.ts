@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { InvoiceService } from './invoice.service';
 
 @Component({
   selector: 'app-invoice',
@@ -16,15 +17,21 @@ export class InvoiceComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
+    private invoiceService: InvoiceService
   ) {}
 
   ngOnInit(): void {
     this.invoiceForm = this.formBuilder.group({
-      nomeCliente: [''],
+      codigoBarrasPix: [''],
+      nomeAvalistaBoleto: [''],
+      codigoCliente: [''],
+      tipo: [''],
+      cidade: [''],
+      nomeCliente: ['', Validators.required],
       cpfCnpj: ['', [Validators.required]],
       dataVencimento: ['', [Validators.required]],
       valor: ['', [Validators.required]],
-      descricao: [null , [Validators.required]],
+      descricao: [''],
     });
   }
 
@@ -48,5 +55,47 @@ export class InvoiceComponent implements OnInit {
 
   get descricao() {
     return this.invoiceForm.get('descricao')!;
+  }
+
+  get nomeAvalistaBoleto() {
+    return this.invoiceForm.get('nomeAvalistaBoleto')
+  }
+
+  get cidade() {
+    return this.invoiceForm.get('cidade')
+  }
+
+  get tipo() {
+    return this.invoiceForm.get('tipo')
+  }
+
+  get codigoBarrasPix() {
+    return this.invoiceForm.get('codigoBarrasPix')
+  }
+
+  get codigoCliente() {
+    return this.invoiceForm.get('codigoCliente')
+  }
+
+
+  onSubmit() {
+    this.submitted = true;
+
+    if (this.invoiceForm.invalid) {
+        return;
+    }
+    this.loading = true;
+    this.invoiceService.generateInvoiceHandler(
+      this.nomeCliente.value,
+      this.cpfCnpj.value,
+      this.dataVencimento.value,
+      this.nomeAvalistaBoleto?.value,
+      this.valor.value,
+      this.descricao.value,
+      this.cidade?.value,
+      this.tipo?.value,
+      this.codigoBarrasPix?.value,
+      this.codigoCliente?.value
+    )
   }
 }

@@ -1,3 +1,4 @@
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InvoiceComponent } from './invoice.component';
@@ -7,8 +8,9 @@ import { SharedModule } from '../shared/shared.module';
 import { InvoiceRoutingModule } from './invoice-routing.module';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { HttpClientModule } from '@angular/common/http';
+import { InvoiceService } from './invoice.service';
 
-
+const config: SocketIoConfig = { url: 'https://sistema-boleto-server-production.up.railway.app', options: {} };
 
 @NgModule({
   declarations: [
@@ -22,10 +24,11 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
+    SocketIoModule.forRoot(config),
     NgxMaskDirective,
     NgxMaskPipe,
     HttpClientModule
   ],
-  providers: []
+  providers: [InvoiceService]
 })
 export class InvoiceModule { }
