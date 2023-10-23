@@ -1,8 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'environment/environment';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, map, of } from 'rxjs';
 import { User } from '../models';
+import { ROLE } from '../models/role';
+import { ActivatedRouteSnapshot } from '@angular/router';
 
 const API = environment.apiUrl;
 
@@ -10,7 +12,7 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
-export const ROLES = {
+const ROLES = {
   ADMIN : 'Admin',
   OPERATOR : 'Operador',
   ATTENDANT : 'Atendente'
@@ -22,7 +24,7 @@ export const ROLES = {
 })
 export class AuthService {
   isLoggedIn = false;
-  userRole = ROLES.ADMIN;
+  userRole = '';
 
 
   private userSubject: BehaviorSubject<User | null>;
@@ -40,25 +42,31 @@ export class AuthService {
   }
 
   authenticate(username: string, password: string) {
+    this.isLoggedIn = true
     return this.http
       .post(
         `${API}/auth/login`,
         {
           username,
-          password,
+          password
         },
         { observe: 'response' }
       )
       .pipe(
         map((user) => {
           localStorage.setItem('user', JSON.stringify(user));
-          localStorage.setItem('ROLES', '')
+          localStorage.setItem('STATE', 'true');
+          localStorage.setItem('ROLE', this.userRole);
           this.userSubject.next(null);
-          this.isLoggedIn = true;
-          return user;
+          return user
         })
       );
 
+  }
+
+  getRole() {
+    localStorage.getItem('ROLE');
+    return this.userRole;
   }
 
   public get userValue() {
@@ -72,7 +80,7 @@ export class AuthService {
     finalNumber: string,
     roles: string,
 
-  ): Observable<User> {
+  ) {
     return this.http.post(
       `${environment.apiUrl}/auth/register`,
       { 

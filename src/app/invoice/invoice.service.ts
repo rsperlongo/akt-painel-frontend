@@ -25,11 +25,11 @@ export class InvoiceService {
     private http: HttpClient,
     ) { }
 
-  getInvoice() {
+ /*  getInvoice() {
     this.socket.connect()
-  }
+  } */
 
-  registerSocket(
+  /* registerSocket(
     nomeCliente: string,
     codigoCliente: string,
     valor: string,
@@ -60,5 +60,5 @@ export class InvoiceService {
     this.socket.fromEvent('registrar').subscribe((data) => {
       return data;
     })
-  } 
+  }  */
 }

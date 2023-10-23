@@ -1,6 +1,7 @@
 import { Injectable, inject } from "@angular/core";
-import { AuthService, ROLES } from "./auth.service";
+import { AuthService } from "./auth.service";
 import { Router, UrlTree } from "@angular/router";
+import { ROLE } from "../models/role";
 
 @Injectable({ providedIn: 'root' })
 
@@ -9,7 +10,7 @@ export class OperatorGuard  {
   router = inject(Router);
 
   canActivate(): boolean | UrlTree {
-    const hasAccess = this.authService.hasRole(ROLES.OPERATOR);
+    const hasAccess = this.authService.hasRole(ROLE.OPERATOR);
     return hasAccess ? true : this.router.createUrlTree(['/unauthorized']);
   }
 }

@@ -17,7 +17,7 @@ export class InvoiceComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private invoiceService: InvoiceService
+   // private invoiceService: InvoiceService
   ) {}
 
   ngOnInit(): void {
@@ -78,7 +78,7 @@ export class InvoiceComponent implements OnInit {
   }
 
 
-  onSubmit() {
+  /* onSubmit() {
     this.submitted = true;
 
     if (this.invoiceForm.invalid) {
@@ -97,5 +97,5 @@ export class InvoiceComponent implements OnInit {
       this.codigoBarrasPix?.value,
       this.codigoCliente?.value
     )
-  }
+  } */
 }

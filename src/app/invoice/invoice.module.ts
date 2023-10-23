@@ -8,9 +8,8 @@ import { SharedModule } from '../shared/shared.module';
 import { InvoiceRoutingModule } from './invoice-routing.module';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { HttpClientModule } from '@angular/common/http';
-import { InvoiceService } from './invoice.service';
 
-const config: SocketIoConfig = { url: 'https://sistema-boleto-server-production.up.railway.app', options: {} };
+// const config: SocketIoConfig = { url: 'https://sistema-boleto-server-production.up.railway.app', options: {} };
 
 @NgModule({
   declarations: [
@@ -24,11 +23,11 @@ const config: SocketIoConfig = { url: 'https://sistema-boleto-server-production.
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    SocketIoModule.forRoot(config),
+    // SocketIoModule.forRoot(config),
     NgxMaskDirective,
     NgxMaskPipe,
     HttpClientModule
   ],
-  providers: [InvoiceService]
+  providers: []
 })
 export class InvoiceModule { }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { ROLE } from '../models/role';
 
 @Component({
   selector: 'app-login',
@@ -12,13 +13,15 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   loading = false;
   submitted = false;
+  roles : string[] = []
 
   constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
       this.loginForm = this.formBuilder.group({
         username: ['', [Validators.required]],
-        password: ['', [Validators.minLength(6), Validators.required]]
+        password: ['', [Validators.minLength(6), Validators.required]],
+        roles: ['']
       })
   }
 

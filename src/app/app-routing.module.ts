@@ -4,12 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { 
   AuthGuardService as AuthGuard 
 } from './services/auth-guard.service';
-import { ROLES } from './services/auth.service';
-import { RoleGuard } from './services/role.guard';
 import { UsersComponent } from './users/users.component';
 import { RegisterComponent } from './register/register.component';
 import { OperatorsComponent } from './operators/operators.component';
 import { AttendantComponent } from './attendant/attendant.component';
+import { roleGuard } from './services/role.guard';
 
 const routes: Routes = [
   {
@@ -25,20 +24,20 @@ const routes: Routes = [
     path: 'users',
     component: UsersComponent,
     loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
-    canActivate: [RoleGuard ],
-    data: { role: ROLES.ADMIN }
+    canActivate: [roleGuard],
   },
   {
     path: 'users/register',
     component: RegisterComponent,
     loadChildren: () => import('./register/register.module').then(m => m.RegisterModule),
-    canActivate: [RoleGuard],
-    data: { role: ROLES.ADMIN }
+    canActivate: [ roleGuard],
+    data: { role: 'ADMIN'  }
   },
   {
     path: 'operators',
     component: OperatorsComponent,
     loadChildren: () => import('./operators/operators.module').then(m => m.OperatorsModule),
+    canActivate: [roleGuard],
   },
   {
     path: 'attendant',
@@ -48,6 +47,7 @@ const routes: Routes = [
   {
     path: 'invoice',
     loadChildren: () => import('./invoice/invoice.module').then(m => m.InvoiceModule),
+    
   },
   {
     path: 'pix',

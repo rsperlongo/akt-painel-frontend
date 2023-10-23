@@ -1,7 +1,0 @@
-{
-    "/api/*": {
-        "target": "https://sistema-boleto-server-production.up.railway.app",
-        "secure": false,
-        "logLevel": "debug"
-    }
-}

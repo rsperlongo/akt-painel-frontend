@@ -9,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { RouterLink } from '@angular/router';
 import { provideNgxMask } from 'ngx-mask';
-import { InvoiceService } from './invoice/invoice.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +22,7 @@ import { InvoiceService } from './invoice/invoice.service';
     NgbModule,
     FontAwesomeModule,
   ],
-  providers: [provideNgxMask(), AuthGuardService, InvoiceService],
+  providers: [provideNgxMask(), AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
