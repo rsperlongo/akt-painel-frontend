@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { Invoice } from '../models/invoice';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { io } from "socket.io-client";
 import { environment } from 'environment/environment';
 
-const token = localStorage.getItem('token')
+
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTY5ODA2MDQyNCwiZXhwIjoxNjk4MTQ2ODI0fQ.hVFXsJVtfvanClrkCcj-lPb32F-qyZKpcQGwl_vr7cc'
 const Auth = `Bearer ${token}`
 
 const httpOptions = {
@@ -27,7 +29,7 @@ export class InvoiceService {
     this.socket.connect()
   }
 
-  generateInvoiceHandler(
+  registerSocket(
     nomeCliente: string,
     codigoCliente: string,
     valor: string,
@@ -39,8 +41,11 @@ export class InvoiceService {
     cidade: string,
     tipo: 'bo'
   ) {
-    this.http.post(`${environment.apiInvoice}/boleto`, { httpOptions })
-    this.socket.on('registar', (invoice: Invoice) => {
+    const socket = io(`${ environment.urlInvoice }`,  { transports: ['websocket'],
+      withCredentials: true,
+      extraHeaders: { 'auth': token }
+   })
+    this.socket.on('register', (invoice: Invoice) => {
       nomeCliente: invoice.nomeCliente,
       codigoCliente; 
       dataVencimento: invoice.dataVencimento,

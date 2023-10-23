@@ -85,7 +85,7 @@ export class InvoiceComponent implements OnInit {
         return;
     }
     this.loading = true;
-    this.invoiceService.generateInvoiceHandler(
+    this.invoiceService.registerSocket(
       this.nomeCliente.value,
       this.cpfCnpj.value,
       this.dataVencimento.value,
