@@ -8,7 +8,9 @@ import { UsersComponent } from './users/users.component';
 import { RegisterComponent } from './register/register.component';
 import { OperatorsComponent } from './operators/operators.component';
 import { AttendantComponent } from './attendant/attendant.component';
-import { roleGuard } from './services/role.guard';
+import { RoleGuard } from './services/role.guard';
+import { OperatorGuard } from './services/operator.guard';
+import { AdminGuard } from './services/admin.guard';
 
 const routes: Routes = [
   {
@@ -24,20 +26,18 @@ const routes: Routes = [
     path: 'users',
     component: UsersComponent,
     loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
-    canActivate: [roleGuard],
   },
   {
     path: 'users/register',
     component: RegisterComponent,
     loadChildren: () => import('./register/register.module').then(m => m.RegisterModule),
-    canActivate: [ roleGuard],
+    canActivate: [ RoleGuard],
     data: { role: 'ADMIN'  }
   },
   {
     path: 'operators',
     component: OperatorsComponent,
     loadChildren: () => import('./operators/operators.module').then(m => m.OperatorsModule),
-    canActivate: [roleGuard],
   },
   {
     path: 'attendant',

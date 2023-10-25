@@ -12,19 +12,12 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
-const ROLES = {
-  ADMIN : 'Admin',
-  OPERATOR : 'Operador',
-  ATTENDANT : 'Atendente'
-}
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   isLoggedIn = false;
-  userRole = '';
+  userRole = ROLE.ADMIN;
 
 
   private userSubject: BehaviorSubject<User | null>;
