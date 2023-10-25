@@ -21,7 +21,7 @@ export class UsersComponent implements OnInit {
         username: '',
         password: '',
         finalNumber: '',
-        roles: '',
+        roles: ROLE.ADMIN,
     }
 
     @Output()
@@ -45,9 +45,6 @@ export class UsersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.retrieveUsers();
-  
-    
     this.id = this.route.snapshot.params['id'];
 
     this.form = this.formBuilder.group({
@@ -69,6 +66,17 @@ export class UsersComponent implements OnInit {
                 this.loading = false;
             });
     }
+
+    const operator = this.operatorsUsers();
+    const admin = this.retrieveUsers();
+    if(this.currentUser.roles !== ROLE.ADMIN) {
+      return operator;
+    } else {
+      return admin
+    }
+  
+    
+    
   }
 
   get f() { return this.form.controls; }

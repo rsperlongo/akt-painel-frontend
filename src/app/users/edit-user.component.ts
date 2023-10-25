@@ -5,6 +5,7 @@ import { UsersService } from "../services/users.service";
 import { first } from "rxjs";
 import { AuthService } from "../services/auth.service";
 import { User } from "../models";
+import { ROLE } from "../models/role";
 
 enum Roles {
     ADMIN = 'Admintrador',
@@ -23,7 +24,7 @@ export class EditUserComponent implements OnInit {
         username: '',
         password: '',
         finalNumber: '',
-        roles: '',
+        roles: ROLE.ADMIN,
     }
 
     message = '';
