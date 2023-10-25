@@ -4,12 +4,11 @@ import { environment } from 'environment/environment';
 import { BehaviorSubject, Observable, map, of } from 'rxjs';
 import { User } from '../models';
 import { ROLE } from '../models/role';
-import { ActivatedRouteSnapshot } from '@angular/router';
 
 const API = environment.apiUrl;
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  headers: new HttpHeaders({ 'Content-Type': 'application/json', Role: [0] }),
 };
 
 @Injectable({
@@ -17,7 +16,8 @@ const httpOptions = {
 })
 export class AuthService {
   isLoggedIn = false;
-  userRole = ROLE.ADMIN;
+  userRole = ROLE.OPERATOR
+  roleAs!: string;
 
 
   private userSubject: BehaviorSubject<User | null>;
@@ -31,10 +31,11 @@ export class AuthService {
   }
 
   hasRole(role: string): boolean {
-    return this.userRole === role
+    return this.roleAs === role
   }
 
   authenticate(username: string, password: string) {
+
     this.isLoggedIn = true
     return this.http
       .post(
@@ -51,7 +52,7 @@ export class AuthService {
           localStorage.setItem('STATE', 'true');
           localStorage.setItem('ROLE', this.userRole);
           this.userSubject.next(null);
-          return user
+          return of({ success: this.isLoggedIn, role: this.userRole });
         })
       );
 

@@ -1,6 +1,8 @@
 import { Injectable, inject } from "@angular/core";
 import { AuthService } from "./auth.service";
 import { ActivatedRouteSnapshot, Router, UrlTree } from "@angular/router";
+import decode from 'jwt-decode';
+import { ROLE } from "../models/role";
 
 // import { CanActivateFn, Router } from "@angular/router";
 // import { AuthService } from "./auth.service";
@@ -12,7 +14,8 @@ export class RoleGuard  {
   router = inject(Router);
 
   canActivate(route: ActivatedRouteSnapshot): boolean | UrlTree | Promise<boolean> {
-    const {role} = route.data;
+
+    const role = route.data["role"];
     const hasAccess = this.authService.hasRole(role);
     return hasAccess ? true : this.router.createUrlTree(['/unauthorized']);
   }

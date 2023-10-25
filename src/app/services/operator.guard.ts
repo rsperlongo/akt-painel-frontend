@@ -2,6 +2,7 @@ import { Injectable, inject } from "@angular/core";
 import { AuthService } from "./auth.service";
 import { Router, UrlTree } from "@angular/router";
 import { ROLE } from "../models/role";
+import { RoleGuard } from "./role.guard";
 
 @Injectable({ providedIn: 'root' })
 

@@ -1,7 +1,7 @@
 import { Injectable, inject } from "@angular/core";
 import { AuthService } from "./auth.service";
 import { Router, UrlTree } from "@angular/router";
-import { ROLE } from "../models/role";
+import { ROLE } from '../models/role';
 
 @Injectable({ providedIn: 'root' })
 

@@ -11,6 +11,7 @@ import { AttendantComponent } from './attendant/attendant.component';
 import { RoleGuard } from './services/role.guard';
 import { OperatorGuard } from './services/operator.guard';
 import { AdminGuard } from './services/admin.guard';
+import { ROLE } from './models/role';
 
 const routes: Routes = [
   {
@@ -26,6 +27,8 @@ const routes: Routes = [
     path: 'users',
     component: UsersComponent,
     loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
+    canActivate: [AdminGuard],
+    data: { ROLE: ROLE.ADMIN }
   },
   {
     path: 'users/register',

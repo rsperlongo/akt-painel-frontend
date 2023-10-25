@@ -6,9 +6,10 @@ import { TokenService } from './token.service';
 import jwt_decode from 'jwt-decode';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
+import { ROLE } from '../models/role';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  headers: new HttpHeaders({ 'Content-Type': 'application/json', Role: 'Admin' }),
 };
 
 @Injectable({
@@ -52,7 +53,11 @@ export class UsersService {
   }
 
   getAll() {
-    return this.http.get<User[]>(`${environment.apiUrl}/users`);
+    return this.http.get<User[]>(`${environment.apiUrl}/users`, httpOptions);
+  }
+
+  getAllOperator() {
+    return this.http.get<User[]>(`${environment.apiUrl}/users/operators`);
   }
 
   getById(id: string) {
