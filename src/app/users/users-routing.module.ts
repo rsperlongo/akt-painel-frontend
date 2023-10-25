@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { UsersComponent } from "./users.component";
 import { EditUserComponent } from "./edit-user.component";
+import { RoleGuard } from "../services/role.guard";
 
 const routes: Routes = [
     {

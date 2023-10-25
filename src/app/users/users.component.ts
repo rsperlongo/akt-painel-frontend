@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../services/users.service';
 import { AuthService } from '../services/auth.service';
 import { first } from 'rxjs';
 import { User } from '../models';
+import { ROLE } from '../models/role';
 
 @Component({
   selector: 'app-users',
@@ -23,6 +24,8 @@ export class UsersComponent implements OnInit {
         roles: '',
     }
 
+    @Output()
+
   users?: any;
   content: any;
   form!: FormGroup;
@@ -31,6 +34,7 @@ export class UsersComponent implements OnInit {
   loading = false;
   submitting = false;
   submitted = false;
+  role?: ROLE.ADMIN 
   
   constructor(
     private usersService: UsersService,
@@ -41,10 +45,9 @@ export class UsersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.usersService.getAll()
-    .pipe(first())
-    .subscribe(users => this.users = users)
-
+    this.retrieveUsers();
+  
+    
     this.id = this.route.snapshot.params['id'];
 
     this.form = this.formBuilder.group({
@@ -122,4 +125,23 @@ export class UsersComponent implements OnInit {
         .subscribe(() => this.users = this.users!.filter((x: any) => x.id !== id));
   }
 
+  retrieveUsers(): void {
+    this.usersService.getAll().subscribe({
+      next: (data) => {
+        this.users = data;
+        console.log(data);
+      },
+      error: (e) => console.error(e)
+    });
+  }
+
+  operatorsUsers() {
+    this.usersService.getAllOperator().subscribe({
+      next: (data) => {
+        this.users = data;
+        console.log(data);
+      },
+      error: (e) => console.error(e)
+    });
+  }
 }
