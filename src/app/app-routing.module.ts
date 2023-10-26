@@ -8,7 +8,6 @@ import { UsersComponent } from './users/users.component';
 import { RegisterComponent } from './register/register.component';
 import { OperatorsComponent } from './operators/operators.component';
 import { AttendantComponent } from './attendant/attendant.component';
-import { RoleGuard } from './services/role.guard';
 import { OperatorGuard } from './services/operator.guard';
 import { AdminGuard } from './services/admin.guard';
 import { ROLE } from './models/role';
@@ -32,7 +31,7 @@ const routes: Routes = [
     path: 'users/register',
     component: RegisterComponent,
     loadChildren: () => import('./register/register.module').then(m => m.RegisterModule),
-    canActivate: [ RoleGuard],
+    canActivate: [ ],
     data: { role: 'ADMIN'  }
   },
   {

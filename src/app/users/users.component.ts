@@ -45,6 +45,7 @@ export class UsersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const admin = this.retrieveUsers();
     this.id = this.route.snapshot.params['id'];
 
     this.form = this.formBuilder.group({
@@ -66,17 +67,6 @@ export class UsersComponent implements OnInit {
                 this.loading = false;
             });
     }
-
-    const operator = this.operatorsUsers();
-    const admin = this.retrieveUsers();
-    if(this.currentUser.roles !== ROLE.ADMIN) {
-      return operator;
-    } else {
-      return admin
-    }
-  
-    
-    
   }
 
   get f() { return this.form.controls; }
@@ -135,16 +125,6 @@ export class UsersComponent implements OnInit {
 
   retrieveUsers(): void {
     this.usersService.getAll().subscribe({
-      next: (data) => {
-        this.users = data;
-        console.log(data);
-      },
-      error: (e) => console.error(e)
-    });
-  }
-
-  operatorsUsers() {
-    this.usersService.getAllOperator().subscribe({
       next: (data) => {
         this.users = data;
         console.log(data);
