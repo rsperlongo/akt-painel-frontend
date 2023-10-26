@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Socket } from 'ngx-socket-io';
 import { Invoice } from '../models/invoice';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { io } from "socket.io-client";
-import { environment } from 'environment/environment';
+import { HttpClient, HttpHeaders } from '@angular/common/http';;
 
 
 const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTY5ODA2MDQyNCwiZXhwIjoxNjk4MTQ2ODI0fQ.hVFXsJVtfvanClrkCcj-lPb32F-qyZKpcQGwl_vr7cc'
@@ -21,8 +18,8 @@ const httpOptions = {
 export class InvoiceService {
 
   constructor(
-    private socket: Socket,
-    private http: HttpClient,
+  /*   private socket: Socket,
+    private http: HttpClient, */
     ) { }
 
  /*  getInvoice() {

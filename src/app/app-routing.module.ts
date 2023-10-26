@@ -31,8 +31,6 @@ const routes: Routes = [
     path: 'users/register',
     component: RegisterComponent,
     loadChildren: () => import('./register/register.module').then(m => m.RegisterModule),
-    canActivate: [ ],
-    data: { role: 'ADMIN'  }
   },
   {
     path: 'operators',

@@ -4,6 +4,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { UsersComponent } from "./users.component";
 import { EditUserComponent } from "./edit-user.component";
 import { RoleGuard } from "../services/role.guard";
+import { RegisterComponent } from "../register/register.component";
 
 const routes: Routes = [
     {
@@ -13,6 +14,10 @@ const routes: Routes = [
     {
         path: 'edit/:id',
         component: EditUserComponent
+    },
+    {
+        path: 'register',
+        component: RegisterComponent
     }
 ]
 
