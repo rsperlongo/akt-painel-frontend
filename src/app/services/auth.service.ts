@@ -8,7 +8,7 @@ import { ROLE } from '../models/role';
 const API = environment.apiUrl;
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json', Role: ROLE.ADMIN }),
+  headers: new HttpHeaders({ 'Content-Type': 'application/json', roles: '' }),
 };
 
 @Injectable({
@@ -51,7 +51,7 @@ export class AuthService {
         map((user) => {
           localStorage.setItem('user', JSON.stringify(user));
           localStorage.setItem('STATE', 'true');
-          // localStorage.setItem('ROLE', this.userRoles) 
+          localStorage.setItem('ROLE', this.userRoles) 
           this.userSubject.next(null);
           return user;
         })

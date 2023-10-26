@@ -45,7 +45,7 @@ export class UsersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const admin = this.retrieveUsers();
+    this.retrieveUsers();
     this.id = this.route.snapshot.params['id'];
 
     this.form = this.formBuilder.group({
