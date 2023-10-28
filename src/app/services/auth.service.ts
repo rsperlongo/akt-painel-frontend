@@ -8,7 +8,7 @@ import { ROLE } from '../models/role';
 const API = environment.apiUrl;
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json', roles: '' }),
+  headers: new HttpHeaders({ 'Content-Type': 'application/json', Role: ROLE.ADMIN }),
 };
 
 @Injectable({

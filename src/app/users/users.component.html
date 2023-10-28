@@ -36,13 +36,13 @@
                         <td><span class="badge text-bg-success">{{ user.roles }}</span></td>
                         <td>{{ user.finalNumber }}</td>
                         <td>
-                          <button routerLink="edit/{{ user.id}}" class="btn btn-outline-info me-2"><i class="fa-solid fa-pen"></i></button>
+                          <a routerLink="./edit/{{ user.id}}" class="btn btn-outline-info me-2"><i class="fa-solid fa-pen"></i></a>
                           <button class="btn btn-outline-danger" (click)="deleteUser(user.id)"><i class="fa-solid fa-trash"></i></button>
                         </td>
                       </tr>
                     </tbody>
                   </table>
-                  <button class="btn btn-outline-info fw-bolder mb-3" routerLink="/users/register"><i class="fa-solid fa-plus"></i>Adicionar</button>
+                  <button class="btn btn-outline-info fw-bolder mb-3" routerLink="/register"><i class="fa-solid fa-plus"></i>Adicionar</button>
             </div>
         </div>
       </div>
