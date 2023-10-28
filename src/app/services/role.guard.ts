@@ -4,31 +4,19 @@ import { ActivatedRouteSnapshot, Router, UrlTree } from "@angular/router";
 import decode from 'jwt-decode';
 import { ROLE } from "../models/role";
 
-// import { CanActivateFn, Router } from "@angular/router";
-// import { AuthService } from "./auth.service";
-// import { inject } from "@angular/core";
-
 @Injectable({ providedIn: 'root' })
 export class RoleGuard  {
   authService = inject(AuthService);
   router = inject(Router);
+  userRoles = ROLE.ADMIN
 
   canActivate(route: ActivatedRouteSnapshot): boolean | UrlTree | Promise<boolean> {
-
+    localStorage.setItem('ROLE', this.userRoles)
     const role = route.data["role"];
     const hasAccess = this.authService.hasRole(role);
+    if(this.userRoles) {
+      return hasAccess;
+    }
     return hasAccess ? true : this.router.createUrlTree(['/unauthorized']);
   }
 }
-
-// export const roleGuard = (role: 'ADMIN' | 'OPERATOR' | 'ATTENDANT'): CanActivateFn => {
-//   const guard: CanActivateFn = () => {
-//     const authService = inject(AuthService);
-//     const router = inject(Router);
-
-//     const hasAccess = authService.hasRole(role);
-//     return hasAccess ? true : router.createUrlTree(['/unauthorized']);
-//   };
-
-//   return guard;
-// };

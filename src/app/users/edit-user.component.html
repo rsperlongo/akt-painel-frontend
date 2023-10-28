@@ -13,7 +13,7 @@
                         <li class="breadcrumb-item active" aria-current="page">Atualização de Usuário</li>
                     </ol>
                 </nav>
-                <div *ngIf="user" >
+                <div *ngIf="user.id" >
                     <div class="card mt-4">
                         <div class="card-body">
                             <h5 class="card-title mb-4">
@@ -29,19 +29,19 @@
                             <form [formGroup]="form" (ngSubmit)="onSubmit()">
                                 <div class="mb-3">
                                     <label class="form-label">Nome</label>
-                                    <input id="name" type="text" [(ngModel)]="user.name" class="form-control"/>
+                                    <input id="name" type="text"  class="form-control"/>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Usuário</label>
-                                    <input id="username"  type="text" [(ngModel)]="user.username" class="form-control" />
+                                    <input id="username"  type="text"  class="form-control" />
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Senha</label>
-                                    <input id="password" type="password" [(ngModel)]="user.password"  class="form-control"  />
+                                    <input id="password" type="password"  class="form-control"  />
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Número Final</label>
-                                    <input id="finalNumber"  type="text" [(ngModel)]="user.finalNumber"  class="form-control"  />
+                                    <input id="finalNumber"  type="text"  class="form-control"  />
                                 </div>
                                 <div class="mb-5">
                                     <select id="roles" formControlName="roles" class="form-select"

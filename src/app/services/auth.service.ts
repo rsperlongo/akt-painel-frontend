@@ -8,7 +8,7 @@ import { ROLE } from '../models/role';
 const API = environment.apiUrl;
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json', Role: [0] }),
+  headers: new HttpHeaders({ 'Content-Type': 'application/json', Role: ROLE.ADMIN }),
 };
 
 @Injectable({
@@ -16,7 +16,7 @@ const httpOptions = {
 })
 export class AuthService {
   isLoggedIn = false;
-  userRole = ROLE.OPERATOR
+  userRoles = ROLE.ADMIN;
   roleAs!: string;
 
 
@@ -39,10 +39,11 @@ export class AuthService {
     this.isLoggedIn = true
     return this.http
       .post(
-        `${API}/auth/login`,
+        `${API}/auth/login`, 
         {
           username,
-          password
+          password,
+          httpOptions
         },
         { observe: 'response' }
       )
@@ -50,9 +51,9 @@ export class AuthService {
         map((user) => {
           localStorage.setItem('user', JSON.stringify(user));
           localStorage.setItem('STATE', 'true');
-          localStorage.setItem('ROLE', this.userRole);
+          localStorage.setItem('ROLE', this.userRoles) 
           this.userSubject.next(null);
-          return of({ success: this.isLoggedIn, role: this.userRole });
+          return user;
         })
       );
 
@@ -60,7 +61,7 @@ export class AuthService {
 
   getRole() {
     localStorage.getItem('ROLE');
-    return this.userRole;
+    return this.userRoles;
   }
 
   public get userValue() {
@@ -84,7 +85,6 @@ export class AuthService {
         finalNumber,
         roles
       },
-      httpOptions
     );
   }
 }

@@ -16,19 +16,15 @@ const routes: Routes = [
     },
     {
         path: 'invoice',
-        component: InvoiceComponent,
-        canActivate: [OperatorGuard]
+        component: InvoiceComponent
     },
     {
         path: 'pix',
-        component: PixComponent,
-        canActivate: [OperatorGuard]
+        component: PixComponent
     },
     {
         path: 'users',
-        component: UsersComponent,
-        canActivate: [RoleGuard],
-        data: { roles: 'ADMIN' }
+        component: UsersComponent
     },
 
 ]

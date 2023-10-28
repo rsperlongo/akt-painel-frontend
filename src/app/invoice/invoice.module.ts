@@ -1,4 +1,3 @@
-import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InvoiceComponent } from './invoice.component';
@@ -13,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    InvoiceComponent,
+    InvoiceComponent
 
   ],
   imports: [

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { InvoiceService } from './invoice.service';
+// import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-invoice',
@@ -15,8 +14,8 @@ export class InvoiceComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
-    private route: ActivatedRoute,
+   // private router: Router,
+   // private route: ActivatedRoute,
    // private invoiceService: InvoiceService
   ) {}
 

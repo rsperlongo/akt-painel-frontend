@@ -6,7 +6,6 @@ import { TokenService } from './token.service';
 import jwt_decode from 'jwt-decode';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
-import { ROLE } from '../models/role';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json', Role: 'Admin' }),
@@ -56,24 +55,20 @@ export class UsersService {
     return this.http.get<User[]>(`${environment.apiUrl}/users`, httpOptions);
   }
 
-  getAllOperator() {
+  getAllOperator(): Observable<User[]> {
     return this.http.get<User[]>(`${environment.apiUrl}/users/operators`);
   }
 
   getById(id: string) {
-    return this.http.get<User>(`${environment.apiUrl}/users/${id}`)
+    return this.http.get<User>(`${environment.apiUrl}/users/${id}`, httpOptions)
   }
 
   update(id: string, data: any): Observable<any> {
-    return this.http.put(`${environment.apiUrl}/users/${id}`, data)
+    return this.http.put(`${environment.apiUrl}/users/${id}`, data, httpOptions)
       .pipe(map(x => {
-        // update stored user if the logged in user updated their own record
         if (id == this.userValue?.id) {
-          // update local storage
           const user = { ...this.userValue, ...data };
           localStorage.setItem('user', JSON.stringify(user));
-
-          // publish updated user to subscribers
           this.userSubject.next(user);
         }
         return x;
@@ -81,7 +76,7 @@ export class UsersService {
   }
 
   delete(id: string) {
-    return this.http.delete(`${environment.apiUrl}/users/${id}`)
+    return this.http.delete(`${environment.apiUrl}/users/${id}`, httpOptions)
       .pipe(map(x => {
         if (id == this.userValue?.id) {
           this.logout();
