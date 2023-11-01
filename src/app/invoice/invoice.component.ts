@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { InvoiceService } from './invoice.service';
+import { Router } from '@angular/router';
 // import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -14,9 +16,9 @@ export class InvoiceComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-   // private router: Router,
+    private router: Router,
    // private route: ActivatedRoute,
-   // private invoiceService: InvoiceService
+   private invoiceService: InvoiceService
   ) {}
 
   ngOnInit(): void {
@@ -77,24 +79,7 @@ export class InvoiceComponent implements OnInit {
   }
 
 
-  /* onSubmit() {
-    this.submitted = true;
-
-    if (this.invoiceForm.invalid) {
-        return;
-    }
-    this.loading = true;
-    this.invoiceService.registerSocket(
-      this.nomeCliente.value,
-      this.cpfCnpj.value,
-      this.dataVencimento.value,
-      this.nomeAvalistaBoleto?.value,
-      this.valor.value,
-      this.descricao.value,
-      this.cidade?.value,
-      this.tipo?.value,
-      this.codigoBarrasPix?.value,
-      this.codigoCliente?.value
-    )
-  } */
+  onSubmit() { 
+    
+  }
 }
