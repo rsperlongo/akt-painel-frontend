@@ -1,64 +1,71 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { User } from '../models';
+import { ROLE } from '../models/role';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../services/users.service';
 import { AuthService } from '../services/auth.service';
 import { first } from 'rxjs';
-import { User } from '../models';
-import { ROLE } from '../models/role';
+
+enum Roles {
+  ADMIN = 'Admintrador',
+  OPERATOR = 'Operador',
+  ATTENDANT = 'Atendente'
+}
+
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  selector: 'app-user-detail',
+  templateUrl: './user-detail.component.html',
+  styleUrls: ['./user-detail.component.scss']
 })
-export class UsersComponent implements OnInit {
+
+export class UserDetailComponent {
+
   @Input() viewMode = false;
 
-    @Input() currentUser: User = {
-        id: '',
-        name: '',
-        username: '',
-        password: '',
-        finalNumber: '',
-        roles: ROLE.ADMIN,
-    }
+  @Input() user: User = {
+    id: '',
+    name: '',
+    username: '',
+    password: '',
+    finalNumber: '',
+    roles: ROLE.ADMIN,
+  }
 
-    @Output()
+  message = '';
 
-  users?: any;
-  content: any;
   form!: FormGroup;
   id?: string;
   title!: string;
   loading = false;
   submitting = false;
   submitted = false;
-  role?: ROLE.ADMIN 
-  
+  eRoles = Roles;
+
   constructor(
-    private usersService: UsersService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService,
-  ) {}
+    private usersService: UsersService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
-    this.retrieveUsers();
+
     this.id = this.route.snapshot.params['id'];
 
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required]],
+      name: [''],
       username: ['', [Validators.required]],
-      password: ['', [Validators.minLength(4)]],
+      password: ['', [Validators.minLength(4)], (!this.id ? [Validators.required] : [])],
       finalNumber: ['', [Validators.required]],
-      roles: ['', Validators.required]
-    }); 
+      roles: [null, [Validators.required]]
+    });
 
     this.title = 'Formulário de Cadastro';
     if (this.id) {
-        this.title = 'Edit User';
+        this.title = 'Editar Usuário';
         this.loading = true;
         this.usersService.getById(this.id)
             .pipe(first())
@@ -69,10 +76,16 @@ export class UsersComponent implements OnInit {
     }
   }
 
+  getUser(id: string, data: any) {
+    this.usersService.getById(id)
+      .pipe(first())
+      .subscribe(user => this.user = user);
+  }
+
   get f() { return this.form.controls; }
 
   get name() {
-    return this.form.get('name');
+    return this.form.get('name')!;
   }
 
   get username() {
@@ -94,6 +107,7 @@ export class UsersComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
+    // stop here if form is invalid
     if (this.form.invalid) {
         return;
     }
@@ -104,38 +118,29 @@ export class UsersComponent implements OnInit {
         .subscribe({
             next: () => {
                 this.router.navigateByUrl('/users');
-            },
+            }
         })
-         
-  }
+}
 
-  private saveUser() {
+private saveUser() {
     return this.id
         ? this.usersService.update(this.id!, this.form.value)
-        : this.authService.register(this.name?.value, this.username.value, this.password.value, this.finalNumber.value, this.roles.value );
-  }
+        : this.authService.register(this.name.value, this.username.value, this.password.value, this.finalNumber.value, this.roles.value);
+}
 
-  deleteUser(id: string) {
-    const user = this.users!.find((x: any) => x.id === id);
-    user.isDeleting = true;
-    this.usersService.delete(id)
-        .pipe(first())
-        .subscribe(() => this.users = this.users!.filter((x: any) => x.id !== id));
-  }
+updateUser(id: string, data: any): void {
+    this.message = '';
 
-  retrieveUsers(): void {
-    this.usersService.getAll().subscribe({
-      next: (data) => {
-        this.users = data;
-        console.log(data);
-      },
-      error: (e) => console.error(e)
+    this.usersService.update(id, data).subscribe({
+        next: (res) => {
+            console.log(res);
+            this.message = res.message
+                ? res.message
+                : 'The status was updated successfully!';
+        },
+        error: (e) => console.error(e)
     });
-  }
+} 
 
-  getUserId(id: string) {
-    if(id) {
 
-    }
-  }
 }

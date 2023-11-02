@@ -9,10 +9,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { RouterLink } from '@angular/router';
 import { provideNgxMask } from 'ngx-mask';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

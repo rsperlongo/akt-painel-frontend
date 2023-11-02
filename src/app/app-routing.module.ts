@@ -12,6 +12,7 @@ import { OperatorGuard } from './services/operator.guard';
 import { AdminGuard } from './services/admin.guard';
 import { ROLE } from './models/role';
 import { RoleGuard } from './services/role.guard';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 const routes: Routes = [
   {
@@ -27,8 +28,11 @@ const routes: Routes = [
     path: 'users',
     component: UsersComponent,
     loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
-    canActivate: [RoleGuard],
-    data: { ROLE: 'Operador' }
+  },
+  {
+    path: 'edit/:id',
+    component: UserDetailComponent,
+    loadChildren: () => import('./user-detail/user-detail.module').then(m => m.UserDetailModule),
   },
   {
     path: 'register',
