@@ -1,0 +1,71 @@
+<h1 class="title-menu mb-4 p-2">Menu Principal</h1>
+
+<div class="accordion bg-primary-subtle" id="accordionExample">
+    <div class="accordion-item bg-primary-subtle">
+      <h2 class="accordion-header bg-primary-subtle">
+        <button class="accordion-button bg-primary-subtle" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <h2 class="fw-light">CADASTROS</h2>
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <ul class="list-group">
+                <li class="list-group-item bg-primary-subtle">
+                    <span class="fw-normal text-nowrap">
+                        <i class="fa-solid fa-users me-2"></i>
+                        <span class="fw-bold"><a class="link" routerLink="#">Usuários</a></span>
+                    </span>
+                </li>
+              </ul>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item bg-primary-subtle">
+      <h2 class="accordion-header bg-primary-subtle">
+        <button class="accordion-button collapsed bg-primary-subtle" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <h2 class="fw-light">PAINEL GERADOR BOLETO/PIX</h2>
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body bg-primary-subtle">
+            <ul class="list-group">
+                <li class="list-group-item bg-primary-subtle">
+                    <span class="fw-normal text-nowrap">
+                        <i class="fa-solid fa-headset me-2"></i>
+                        <span class="fw-bold"><a class="link" routerLink="/attendant">Atendente</a></span>
+                    </span>
+                </li>
+                <li class="list-group-item bg-primary-subtle">
+                    <span class="fw-normal text-nowrap">
+                        <i class="fa-solid fa-desktop me-2"></i>
+                        <span class="fw-bold"><a class="link" routerLink="/operators">Operador</a></span>
+                    </span>
+                </li>
+              </ul>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed bg-primary-subtle" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <h2 class="fw-light">CONFIGURAÇÕES</h2>
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body bg-primary-subtle">
+            <ul class="list-group">
+                <li class="list-group-item bg-primary-subtle">
+                    <span class="fw-normal text-nowrap">
+                        <i class="fa-solid fa-book me-2"></i>
+                        <span class="fw-bold"><a class="link" routerLink="/payment-config">Definições de Pagamento</a></span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+

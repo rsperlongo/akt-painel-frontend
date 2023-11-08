@@ -3,16 +3,23 @@ import { CommonModule } from '@angular/common';
 import { UsersComponent } from './users.component';
 import { UsersRoutingModule } from './users-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+import { EditUserComponent } from './edit-user.component';
 
 
 
 @NgModule({
   declarations: [
-    UsersComponent
+    UsersComponent,
+    EditUserComponent
   ],
   imports: [
     CommonModule,
     UsersRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    RouterLink,
     SharedModule
   ]
 })
