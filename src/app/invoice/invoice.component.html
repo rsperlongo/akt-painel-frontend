@@ -36,43 +36,62 @@
                                         <label for="nome" class="col-form-label">Nome</label>
                                     </div>
                                     <div class="col-10 mb-2">
-                                        <input type="text" id="nome" class="form-control" aria-describedby="name">
+                                        <input type="text" formControlName="nomeCliente" id="nome" class="form-control" aria-describedby="name">
                                     </div>
 
                                     <div class="col-2 mb-2">
                                         <label for="cpfcnpj" class="col-form-label">CPF/CNPJ</label>
                                     </div>
                                     <div class="col-10 mb-2">
-                                        <input type="text" mask="000.000.000/000-0 || 000.000.000-00" id="cpfcnpj" class="form-control" aria-describedby="cpfcnpj">
+                                        <input
+                                        type="text"
+                                        formControlName="cpfCnpj"
+                                        mask="000.000.000/0000-0||000.000.000-00"
+                                        id="cpfcnpj" class="form-control"
+                                        aria-describedby="cpfcnpj"
+                                        (focus)="mostrarMensagemErro = false"
+                                        (input)="mostrarMensagemErro = false"
+                                        (blur)="verificarValidade()"
+                                        >
+                                    </div>
+                                    <div *ngIf="mostrarMensagemErro" class="message fw-light mt-1">
+                                      CPF ou CNPJ inválido.
                                     </div>
 
                                     <div class="col-2 mb-2">
                                         <label for="date" class="col-form-label">Data Vencimento</label>
                                     </div>
                                     <div class="col-10 mb-2">
-                                        <input type="date" id="date" class="form-control" aria-describedby="date">
+                                        <input type="date" formControlName="dataVencimento" id="date" class="form-control" aria-describedby="date">
                                     </div>
 
                                     <div class="col-2 mb-2">
                                         <label for="value" class="col-form-label">Valor</label>
                                     </div>
                                     <div class="col-10 mb-2">
-                                        <input type="text" id="valor" class="form-control" aria-describedby="value"
+                                        <input type="text" formControlName="valor" id="valor" class="form-control" aria-describedby="value"
                                             placeholder="0,00">
+                                    </div>
+
+                                    <div class="col-2 mb-2">
+                                      <label for="value" class="col-form-label">Código de Barras</label>
+                                    </div>
+                                    <div class="col-10 mb-2">
+                                      <input type="text" formControlName="codigoBarrasPix" id="codigoBarrasPix" class="form-control" aria-describedby="value">
                                     </div>
 
                                     <div class="col-2 mb-2">
                                         <label for="value" class="col-form-label">Descrição</label>
                                     </div>
                                     <div class="col-10 mb-2">
-                                        <textarea id="description" class="form-control"
+                                        <textarea id="description" formControlName="descricao" class="form-control"
                                             aria-describedby="description"></textarea>
                                     </div>
 
                                 </div>
                                 <div class="row justify-content-end">
                                     <div class="col-auto">
-                                        <button [disabled]=""  class="btn btn-info btn-lg">
+                                        <button type="submit" [disabled]="invoiceForm.invalid" (click)="registrar()" class="btn btn-info btn-lg">
                                             <span *ngIf="" class="spinner-border spinner-border-sm me-1"></span>
                                             <span class="fw-normal text-nowrap">
                                                 <i class="fa-brands fa-wpforms me-2"></i>
@@ -82,7 +101,7 @@
                                     </div>
 
                                     <div class="col-2">
-                                        <button class="btn btn-primary btn-lg">
+                                        <button (click)="limparFormulario()" class="btn btn-primary btn-lg">
                                             <span class="fw-normal text-nowrap">
                                                 <i class="fa-solid fa-eraser me-2"></i>
                                             </span>

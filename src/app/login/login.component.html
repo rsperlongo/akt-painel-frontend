@@ -27,7 +27,7 @@
                 senha obrigatório
               </div>
               <div *ngIf="password.errors?.['minlength']" class="message fw-light mt-1">
-                Senha deve ter pelo menos 4 caracteres.
+                Senha deve ter pelo menos 6 caracteres.
               </div>
               <div class="d-grid">
                 <button type="submit" [disabled]="loginForm.invalid" class="btn btn-info fw-bold"
