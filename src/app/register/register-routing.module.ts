@@ -3,7 +3,6 @@ import { RouterModule, Routes } from "@angular/router";
 import { RegisterComponent } from "./register.component";
 import { CommonModule } from "@angular/common";
 import { UsersComponent } from "../users/users.component";
-import { EditUserComponent } from "../users/edit-user.component";
 
 const routes :Routes = [
     {
@@ -14,10 +13,6 @@ const routes :Routes = [
         path: '',
         component: UsersComponent
     },
-    {
-        path: '',
-        component: EditUserComponent
-    }
 ]
 
 @NgModule({

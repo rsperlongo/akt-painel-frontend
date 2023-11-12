@@ -1,20 +1,18 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { UsersComponent } from "./users.component";
 import { RegisterComponent } from "../register/register.component";
 import { UserDetailComponent } from "../user-detail/user-detail.component";
+import { UsersComponent } from "../users/users.component";
 
 const routes: Routes = [
     {
-        path: '',
+        path: 'users',
         component: UsersComponent,
-        children: [ 
-            {
-                path: 'edit/:id',
-                component: UserDetailComponent
-            }
-         ]
+    },
+    {
+        path: '',
+        component: UserDetailComponent,
     },
     {
         path: 'register',
@@ -29,4 +27,4 @@ const routes: Routes = [
     ]
 })
 
-export class UsersRoutingModule {}
+export class UserDetailRoutingModule {}

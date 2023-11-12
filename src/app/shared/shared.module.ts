@@ -9,7 +9,7 @@ import { HeaderComponent } from '../components/header/header.component';
 
 
 @NgModule({
-  declarations: [ 
+  declarations: [
     HeaderComponent,
     SidebarComponent,
     SidebarOperatorComponent,

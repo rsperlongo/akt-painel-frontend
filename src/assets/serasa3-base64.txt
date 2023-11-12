@@ -1,0 +1,20 @@
+    const serasa = textBody.serasa;
+    const halfPageWidthSerasa = (this.pdf.internal.pageSize.getWidth() / 2) - (10 + 10);
+    this.pdf.setFont('helvetica');
+    this.pdf.setFontSize(10);
+    const textLines = this.pdf.splitTextToSize(serasa, halfPageWidthSerasa);
+    const textHeight = textLines.length * 6;
+
+this.pdf.rect(10, 94, halfPageWidthSerasa, textHeight + 20);
+
+this.pdf.line(15, 185, this.pdf.internal.pageSize.getWidth() - 18, 185);
+
+
+
+    if (abrirNavegador){
+      const pdfData = this.pdf.output('blob');
+      const url = URL.createObjectURL(pdfData);
+      window.open(url, '_blank');
+    } else {
+      this.pdf.save(`Pagamento-${formulario.nomeCliente}.pdf`);
+  }
