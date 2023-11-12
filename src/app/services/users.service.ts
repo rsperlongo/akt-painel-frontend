@@ -75,6 +75,8 @@ export class UsersService {
       }));
   }
 
+  
+
   delete(id: string) {
     return this.http.delete(`${environment.apiUrl}/users/${id}`, httpOptions)
       .pipe(map(x => {
