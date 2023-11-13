@@ -7,12 +7,14 @@ import { SharedModule } from '../shared/shared.module';
 import { InvoiceRoutingModule } from './invoice-routing.module';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { HttpClientModule } from '@angular/common/http';
+import { EditInvoiceComponent } from './edit-invoice.component';
 
 // const config: SocketIoConfig = { url: 'https://sistema-boleto-server-production.up.railway.app', options: {} };
 
 @NgModule({
   declarations: [
-    InvoiceComponent
+    InvoiceComponent,
+    EditInvoiceComponent
 
   ],
   imports: [
@@ -22,7 +24,6 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    // SocketIoModule.forRoot(config),
     NgxMaskDirective,
     NgxMaskPipe,
     HttpClientModule

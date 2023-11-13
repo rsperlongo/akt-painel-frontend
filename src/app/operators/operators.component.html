@@ -19,34 +19,48 @@
                     <div class="card">
                         <div class="alert alert-info m-4" role="alert">
                             <h5><i class="fa-solid fa-circle-info"></i>Atenção</h5>
-                            <p class="alert-font">Após preencher os dados do boleto, aguarde a liberação do operador.</p>
+                            <p class="alert-font">Após preencher os dados do boleto, aguarde a liberação.</p>
                         </div>
                         <div class="card m-3">
-                            <button class="btn btn-outline-info fw-bolder mb-2" routerLink="/invoice"><i class="fa-solid fa-barcode me-2"></i>Emitir Boleto de Pagamento</button>
-                            <button class="btn btn-outline-info fw-bolder" routerLink="/pix"><i class="fa-solid fa-qrcode me-2"></i>Emitir Pix de Pagamento</button>
+                            <button class="btn btn-outline-info fw-bolder mb-2" routerLink="/invoice">
+                                <i class="fa-solid fa-barcode me-2"></i>
+                                <i class="fa-solid fa-qrcode me-2"></i>
+                                Emitir Boleto de Pagamento / PIX
+                            </button>
                         </div>
                     </div>
                 </div>
                 <div class="col-7 mt-4">
                     <div class="card">
-                        <div class="alert alert-warning m-3" role="alert">
+                        <div *ngIf="!listaFormulario" class="alert alert-warning m-3" role="alert">
                             <p class="ms-3">Aguardando Emissão de Pagamentos</p>
                         </div>
-                        <h2 class="ms-3">Pagamentos Emitidos</h2>
-                      <div class="scroll-container">
-                        <div class="card m-3 paymentCard item"*ngFor="let formulario of listaFormulario; let i = index">
-                          <p class="fw-bold mt-4 ms-4"> {{formulario.nomeCliente}} </p>
-                          <p class="ms-4">{{formulario.cpfCnpj | cpfCnpjMask}} - R$ {{formulario.valor}} ({{formulario.dataVencimento | date:'EEE, dd \'de\' MMM \'de\' yyyy'}})
-                              <a routerLink="/attendant/invoice" class="btn btn-outline-info ms-5 me-1"><i class="fa-solid fa-pen"></i></a>
-                              <a (click)="gerarPDF(formulario, true, true)" class="btn btn-outline-info me-1"><i class="fa-solid fa-file-pdf"></i></a>
-                              <a (click)="gerarPDF(formulario, false, true)" class="btn btn-outline-info me-1"><i class="fa-solid fa-download"></i></a>
-                              <a (click)="gerarPDF(formulario, false, false)" class="btn btn-outline-info"><i class="fa-solid fa-barcode"></i></a>
-                              <span class="ms-5">
-                                  <i class="fa-solid fa-circle-check fa-2xl" style="color: #36b125;"></i>
-                              </span>
-                          </p>
+                        <h2 class="ms-3 mt-3">Pagamentos Emitidos</h2>
+                        <div class="scroll-container">
+                            <div class="card m-3 paymentCard item"
+                                *ngFor="let formulario of listaFormulario; let i = index">
+                                <p class="fw-bold mt-4 ms-4"> {{formulario.nomeCliente}} </p>
+                                <p class="ms-4">{{formulario.cpfCnpj | cpfCnpjMask}} - R$ {{formulario.valor}}
+                                    ({{formulario.dataVencimento | date:'EEE, dd \'de\' MMM \'de\' yyyy'}})
+                                    <a routerLink="/attendant/invoice" class="btn btn-outline-info ms-5 me-1"><i
+                                            class="fa-solid fa-pen" data-bs-toggle="tooltip"
+                                            data-bs-placement="top"
+                                            title="Editar Boleto"></i></a>
+
+                                    <a (click)="gerarPDF(formulario, true, true)" class="btn btn-outline-info me-1"
+                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Emitir PDF"><i
+                                            class="fa-solid fa-file-pdf"></i></a>
+
+                                    <a (click)="gerarPDF(formulario, false, true)" class="btn btn-outline-info me-1"
+                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Download"><i
+                                            class="fa-solid fa-download"></i></a>
+
+                                    <a (click)="gerarPDF(formulario, false, false)" class="btn btn-outline-info"
+                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Emitir Boleto">
+                                        <i class="fa-solid fa-barcode"></i></a>
+                                </p>
+                            </div>
                         </div>
-                      </div>
                     </div>
 
                 </div>

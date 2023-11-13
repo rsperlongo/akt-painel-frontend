@@ -19,7 +19,6 @@ export class InvoiceComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-   // private route: ActivatedRoute,
    private invoiceService: InvoiceService
   ) {}
 
@@ -28,7 +27,6 @@ export class InvoiceComponent implements OnInit {
       codigoBarrasPix: [''],
       nomeAvalistaBoleto: [''],
       codigoCliente: [''],
-      tipo: [''],
       cidade: [''],
       nomeCliente: ['', Validators.required],
       cpfCnpj: ['', [Validators.required, cpfCnpjValidator()]],
@@ -87,20 +85,11 @@ export class InvoiceComponent implements OnInit {
     return this.invoiceForm.get('cidade')
   }
 
-  get tipo() {
-    return this.invoiceForm.get('tipo')
-  }
-
   get codigoBarrasPix() {
     return this.invoiceForm.get('codigoBarrasPix')
   }
 
   get codigoCliente() {
     return this.invoiceForm.get('codigoCliente')
-  }
-
-
-  onSubmit() {
-
   }
 }

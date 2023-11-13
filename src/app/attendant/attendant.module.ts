@@ -5,12 +5,15 @@ import { AttendantRouterModule } from './attendant-routing.module';
 import { RouterLink } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { CpfCnpjMaskPipe } from '../operators/cpf-cnpj-mask.pipe';
 
 
 
 @NgModule({
   declarations: [
-    AttendantComponent
+    AttendantComponent,
+    CpfCnpjMaskPipe
+
   ],
   imports: [
     CommonModule,
