@@ -13,7 +13,7 @@
                         <li class="breadcrumb-item active" aria-current="page">Atualização de Usuário</li>
                     </ol>
                 </nav>
-                <div *ngIf="user.id">
+                <div *ngIf="user">
                     <div class="card mt-4">
                         <div class="card-body">
                             <h5 class="card-title mb-4">
@@ -28,21 +28,21 @@
                             </div>
                             <form [formGroup]="form" (ngSubmit)="onSubmit()">
                                 <div class="mb-3">
-                                    <label for="name" class="form-label">Nome</label>
-                                    <input id="name" type="text" [(ngModel)]="user.name" class="form-control" />
+                                    <label for="user-name" class="form-label">Nome</label>
+                                    <input id="user-name" type="text" formControlName="name" class="form-control" />
                                 </div>
                                 <div class="mb-3">
-                                    <label for="username" class="form-label">Usuário</label>
-                                    <input id="username" type="text" [(ngModel)]="user.username" class="form-control" />
+                                    <label for="user-username" class="form-label">Usuário</label>
+                                    <input id="user-username" type="text" formControlName="username" class="form-control" />
                                 </div>
                                 <div class="mb-3">
-                                    <label for="password" class="form-label">Senha</label>
-                                    <input id="password" type="password" [(ngModel)]="user.password"
+                                    <label for="user-password" class="form-label">Senha</label>
+                                    <input id="user-password" type="password" formControlName="password"
                                         class="form-control" />
                                 </div>
                                 <div class="mb-4">
-                                    <label for="finalNumber" class="form-label">Número Final</label>
-                                    <input id="finalNumber" type="text" [(ngModel)]="user.finalNumber"
+                                    <label for="user-finalNumber" class="form-label">Número Final</label>
+                                    <input id="user-finalNumber" type="text" formControlName="finalNumber"
                                         class="form-control" />
                                 </div>
                                 <div class="mb-5">
@@ -65,7 +65,7 @@
                                         </div>
 
                                         <div class="col-2">
-                                            <button class="btn btn-primary btn-lg">
+                                            <button class="btn btn-primary btn-lg" (click)="clearForm()">
                                                 <span class="fw-normal text-nowrap">
                                                     <i class="fa-solid fa-eraser me-2"></i>
                                                 </span>

@@ -9,7 +9,7 @@ const routes: Routes = [
         component: InvoiceComponent
     },
     {
-        path: '',
+        path: 'editar',
         component: EditInvoiceComponent
     }
 ]

@@ -76,6 +76,11 @@ export class UserDetailComponent {
     }
   }
 
+  clearForm() {
+    // Isso irá zerar todos os campos do formulário
+    this.form.reset();
+  }
+
   getUser(id: string, data: any) {
     this.usersService.getById(id)
       .pipe(first())
@@ -125,10 +130,16 @@ export class UserDetailComponent {
 private saveUser() {
     return this.id
         ? this.usersService.update(this.id!, this.form.value)
-        : this.authService.register(this.name.value, this.username.value, this.password.value, this.finalNumber.value, this.roles.value);
+        : this.authService.register(
+          this.name.value, 
+          this.username.value, 
+          this.password.value, 
+          this.finalNumber.value, 
+          this.roles.value
+          );
 }
 
-updateUser(id: string, data: any): void {
+/* updateUser(id: string, data: any): void {
     this.message = '';
 
     this.usersService.update(id, data).subscribe({
@@ -140,7 +151,7 @@ updateUser(id: string, data: any): void {
         },
         error: (e) => console.error(e)
     });
-} 
+}  */
 
 
 }
