@@ -35,7 +35,11 @@
                                         <label for="nome" class="col-form-label">Nome</label>
                                     </div>
                                     <div class="col-10 mb-2">
-                                        <input type="text" formControlName="nomeCliente" id="nome" class="form-control" aria-describedby="name">
+                                        <input type="text" 
+                                                formControlName="nomeCliente" 
+                                                id="nome" class="form-control"
+                                                [ngModel]="" 
+                                                aria-describedby="name">
                                     </div>
 
                                     <div class="col-2 mb-2">

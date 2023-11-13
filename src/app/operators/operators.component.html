@@ -32,7 +32,7 @@
                 </div>
                 <div class="col-7 mt-4">
                     <div class="card">
-                        <div *ngIf="!listaFormulario === true" class="alert alert-warning m-3" role="alert">
+                        <div *ngIf="!listaFormulario" class="alert alert-warning m-3" role="alert">
                             <p class="ms-3">Aguardando Emissão de Pagamentos</p>
                         </div>
                         <h2 class="ms-3 mt-3">Pagamentos Emitidos</h2>
@@ -58,9 +58,6 @@
                                     <a (click)="gerarPDF(formulario, false, false)" class="btn btn-outline-info"
                                         data-bs-toggle="tooltip" data-bs-placement="top" title="Emitir Boleto">
                                         <i class="fa-solid fa-barcode"></i></a>
-                                    <span class="ms-5">
-                                        <i class="fa-solid fa-circle-check fa-2xl" style="color: #36b125;"></i>
-                                    </span>
                                 </p>
                             </div>
                         </div>
