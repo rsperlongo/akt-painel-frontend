@@ -64,7 +64,7 @@ export class UsersService {
   }
 
   update(id: string, data: any): Observable<any> {
-    return this.http.put(`${environment.apiUrl}/users/${id}`, data, httpOptions)
+    return this.http.patch(`${environment.apiUrl}/users/${id}`, data, httpOptions)
       .pipe(map(x => {
         if (id == this.userValue?.id) {
           const user = { ...this.userValue, ...data };

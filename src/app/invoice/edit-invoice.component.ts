@@ -51,6 +51,10 @@ import { cpfCnpjValidator } from "./cpf-cnpj.validator";
         this.router.navigate(['attendant']);
       }
 
+      atualizar() {
+        
+      }
+
       get f() { return this.invoiceEditForm.controls as unknown as AbstractControl }
 
   get nomeCliente() {
