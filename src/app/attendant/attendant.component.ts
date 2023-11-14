@@ -1,3 +1,4 @@
+import { CpfCnpjMaskPipe } from './../operators/cpf-cnpj-mask.pipe';
 import { Component, OnInit } from '@angular/core';
 import jsPDF from 'jspdf';
 import { toDataURL } from 'qrcode';

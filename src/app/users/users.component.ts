@@ -112,7 +112,13 @@ export class UsersComponent implements OnInit {
   private saveUser() {
     return this.id
         ? this.usersService.update(this.id!, this.form.value)
-        : this.authService.register(this.name?.value, this.username.value, this.password.value, this.finalNumber.value, this.roles.value );
+        : this.authService.register(
+          this.name?.value, 
+          this.username.value, 
+          this.password.value, 
+          this.finalNumber.value, 
+          this.roles.value 
+          );
   }
 
   deleteUser(id: string) {
@@ -131,11 +137,5 @@ export class UsersComponent implements OnInit {
       },
       error: (e) => console.error(e)
     });
-  }
-
-  getUserId(id: string) {
-    if(id) {
-
-    }
   }
 }

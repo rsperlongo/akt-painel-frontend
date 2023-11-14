@@ -24,6 +24,7 @@ import { CpfCnpjMaskPipe } from './cpf-cnpj-mask.pipe';
     SharedModule,
     HttpClientModule
   ],
-  providers: []
+  providers: [],
+  exports: [CpfCnpjMaskPipe]
 })
 export class OperatorsModule { }

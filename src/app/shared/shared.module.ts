@@ -5,6 +5,7 @@ import { SidebarComponent } from '../components/sidebar/sidebar.component';
 import { RouterLink } from '@angular/router';
 import { SidebarAttendantComponent } from '../components/sidebar/sidebar-attendant.component';
 import { HeaderComponent } from '../components/header/header.component';
+import { CpfCnpjMaskPipe } from '../operators/cpf-cnpj-mask.pipe';
 
 
 
@@ -13,7 +14,7 @@ import { HeaderComponent } from '../components/header/header.component';
     HeaderComponent,
     SidebarComponent,
     SidebarOperatorComponent,
-    SidebarAttendantComponent
+    SidebarAttendantComponent,
   ],
   imports: [
     CommonModule,
