@@ -11,7 +11,6 @@ import { DashboardRoutingModule } from 'src/app/dashboard/dashboard-routing.modu
   declarations: [],
   imports: [
     CommonModule,
-    SharedModule,
     SidebarRoutingModule,
     DashboardRoutingModule
   ]

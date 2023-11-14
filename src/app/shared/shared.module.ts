@@ -6,6 +6,7 @@ import { RouterLink } from '@angular/router';
 import { SidebarAttendantComponent } from '../components/sidebar/sidebar-attendant.component';
 import { HeaderComponent } from '../components/header/header.component';
 import { CpfCnpjMaskPipe } from '../operators/cpf-cnpj-mask.pipe';
+import { FooterComponent } from '../components/footer/footer.component';
 
 
 
@@ -15,11 +16,12 @@ import { CpfCnpjMaskPipe } from '../operators/cpf-cnpj-mask.pipe';
     SidebarComponent,
     SidebarOperatorComponent,
     SidebarAttendantComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
     RouterLink
   ],
-  exports: [ HeaderComponent, SidebarComponent, SidebarOperatorComponent, SidebarAttendantComponent ]
+  exports: [ HeaderComponent, SidebarComponent, SidebarOperatorComponent, SidebarAttendantComponent, FooterComponent ]
 })
 export class SharedModule { }
