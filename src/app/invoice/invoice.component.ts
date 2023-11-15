@@ -1,9 +1,8 @@
+import { Invoice } from './../models/invoice';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { InvoiceService } from './invoice.service';
 import { Router } from '@angular/router';
 import { cpfCnpjValidator } from './cpf-cnpj.validator';
-// import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-invoice',
@@ -18,8 +17,7 @@ export class InvoiceComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
-   private invoiceService: InvoiceService
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +31,7 @@ export class InvoiceComponent implements OnInit {
       dataVencimento: ['', [Validators.required]],
       valor: ['', [Validators.required]],
       descricao: [''],
+      chavePix: [''],
     });
   }
 
@@ -91,5 +90,9 @@ export class InvoiceComponent implements OnInit {
 
   get codigoCliente() {
     return this.invoiceForm.get('codigoCliente')
+  }
+
+  get chavePix() {
+    return this.invoiceForm.get('chavePix')
   }
 }

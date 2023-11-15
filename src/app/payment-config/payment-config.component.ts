@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Invoice } from './../models/invoice';
+import { Component, Input } from '@angular/core';
 import { PaymentConfigService } from '../services/payment-config.service';
 import { PaymentConfig } from '../models/payment-config';
+import { InvoiceComponent } from '../invoice/invoice.component';
 
 @Component({
   selector: 'app-payment-config',
@@ -8,22 +10,11 @@ import { PaymentConfig } from '../models/payment-config';
   styleUrls: ['./payment-config.component.scss']
 })
 export class PaymentConfigComponent {
+    @Input('listaformulario') invoice! : InvoiceComponent
 
     constructor(private configPaymentService: PaymentConfigService) {}
-    invoicePix: PaymentConfig[] = [];
 
     ngOninit():void {
-      this.paymentConfig();
-    }
-
-    paymentConfig() {
-      this.configPaymentService.getPaymentConfig()
-      .subscribe({
-        next: (data) => {
-          this.invoicePix = data
-          console.log(data);
-        },
-        error: (e) => console.error(e)
-      });
+      // this.paymentConfig();
     }
 }

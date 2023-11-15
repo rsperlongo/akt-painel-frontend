@@ -14,27 +14,26 @@
         </nav>
       </div>
       <div class="row">
-        <div class="col">
+        <div class="col-5">
             <div class="card">
                 <h2 class="m-3"><i class="fa-solid fa-barcode me-2"></i>Dados Boleto</h2>
                 <ul class="list-group list-group-flush m-3">
                     <li class="list-group-item">Nome do Avalista: <p>GOOGLE INTERNET</p></li>
                     <li class="list-group-item">Beneficiário: <p>GOOGLE INTERNET</p></li>
-                    <li class="list-group-item">CNPJ: <p>18415055800</p></li>
-                    <li class="list-group-item">A fourth item</li>
-                    <li class="list-group-item">Sacado <p>ROMARIO SALES ILARIO</p></li>
+                    <li class="list-group-item">CNPJ: <p>{{ invoice.cpfCnpj }}</p></li>
+                    <li class="list-group-item">Sacado <p>{{ invoice.nomeCliente }}</p></li>
                   </ul>
             </div>
 
         </div>
-        <div class="col">
+        <div class="col-5">
             <div class="card">
                 <h2 class="m-3"><i class="fa-solid fa-qrcode me-2"></i>Dados PIX - QRCode</h2>
                 <ul class="list-group list-group-flush m-3">
                     <li class="list-group-item">Nome do Avalista: <p>JONATHAN AMARANTE TORRES</p></li>
-                    <li class="list-group-item">Tipo de Chave: <p>ALEATORIA</p></li>
-                    <li class="list-group-item">Chave Pix: <p>7FD7BB25-79DD-4F00-B719-7633CD052FC6</p></li>
-                    <li class="list-group-item">Cidade: <p>SAO PAULO</p></li>
+                    <li class="list-group-item">Tipo de Chave: <p>{{ invoice }}</p></li>
+                    <li class="list-group-item">Chave Pix: <p>{{ invoice.chavePix }}</p></li>
+                    <li class="list-group-item">Cidade: <p>{{ invoice.cidade }}</p></li>
                     <li class="list-group-item">Código da transferência: <p>FEIRAO2023BR</p></li>
                   </ul>
             </div>
