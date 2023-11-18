@@ -7,10 +7,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
-    FooterComponent
   ],
   imports: [
     CommonModule,
+    SharedModule
   ]
 })
 export class FooterModule { }

@@ -27,11 +27,15 @@
                                 <i class="fa-solid fa-qrcode me-2"></i>
                                 Emitir Boleto de Pagamento / PIX
                             </button>
+                            <button class="btn btn-outline-info fw-bolder mb-2" routerLink="/pix">
+                                <i class="fa-solid fa-qrcode me-2"></i>
+                                Emitir Boleto de PIX
+                            </button>
                         </div>
                     </div>
                 </div>
                 <div class="col-7 mt-4">
-                    <div class="card">
+                    <div class="card card-invoice">
                         <div *ngIf="!listaFormulario === true" class="alert alert-warning m-3" role="alert">
                             <p class="ms-3">Aguardando Emissão de Pagamentos</p>
                         </div>

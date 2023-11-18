@@ -1,129 +1,131 @@
 <app-header></app-header>
 <div class="container-fluid bg-body-secondary bg-gradient vh-100">
     <div class="row align-items-center">
-        <div class="col-2 bg-primary-subtle vh-100">
+        <div class="col-md-2 bg-primary-subtle vh-100">
             <app-sidebar></app-sidebar>
         </div>
         <div class="col-10 vh-100">
             <div class="row justify-content-between m-5">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-3 p-2 mt-3">
-                        <li class="breadcrumb-item"><a routerLink="/dashboard">Menu Principal</a></li>
-                        <li class="breadcrumb-item"><a routerLink="/attendant">Painel Gerador Boleto - PIX /
-                                Atendente</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Emissão de Boleto de pagamento
-                        </li>
-                    </ol>
-                </nav>
-                <div class="col-8 mt-4">
-                    <div class="card">
-                        <div class="card-body mb-4">
-                            <h5 class="card-title mb-4">
-                                <span class="fw-normal text-nowrap">
-                                    <i class="fa-solid fa-barcode me-2"></i>
-                                </span>Emissão de Boletos
-                            </h5>
-                            <div class="alert alert-warning mb-4" role="alert">
-                                <strong>Atenção!</strong>
-                                <p> - Emitir Boleto de pagamento para mesmo dia.<br>
-                                    - Não esqueça de colocar o seu final Ex: 499.00<br>
-                                    - PIX E BOLETOS EMITIDOS EM PDF</p>
-                            </div>
-                            <form [formGroup]="invoiceForm">
-                                <div class="row align-items-center">
-
-                                    <div class="col-2 mb-2">
-                                        <label for="nome" class="col-form-label">Nome</label>
-                                    </div>
-                                    <div class="col-10 mb-2">
-                                        <input type="text" formControlName="nomeCliente" id="nome" class="form-control" aria-describedby="name">
-                                    </div>
-
-                                    <div class="col-2 mb-2">
-                                        <label for="cpfcnpj" class="col-form-label">CPF/CNPJ</label>
-                                    </div>
-                                    <div class="col-10 mb-2">
-                                        <input
-                                        type="text"
-                                        formControlName="cpfCnpj"
-                                        mask="000.000.000/0000-0||000.000.000-00"
-                                        id="cpfcnpj" class="form-control"
-                                        aria-describedby="cpfcnpj"
-                                        (focus)="mostrarMensagemErro = false"
-                                        (input)="mostrarMensagemErro = false"
-                                        (blur)="verificarValidade()"
-                                        >
-                                    </div>
-                                    <div *ngIf="mostrarMensagemErro" class="message fw-light mt-1">
-                                      CPF ou CNPJ inválido.
-                                    </div>
-
-                                    <div class="col-2 mb-2">
-                                        <label for="date" class="col-form-label">Data Vencimento</label>
-                                    </div>
-                                    <div class="col-10 mb-2">
-                                        <input type="date" formControlName="dataVencimento" id="date" class="form-control" aria-describedby="date">
-                                    </div>
-
-                                    <div class="col-2 mb-2">
-                                        <label for="value" class="col-form-label">Valor</label>
-                                    </div>
-                                    <div class="col-10 mb-2">
-                                        <input type="text" formControlName="valor" id="valor" class="form-control" aria-describedby="value"
-                                            placeholder="0,00">
-                                    </div>
-
-                                    <div class="col-2 mb-2">
-                                      <label for="value" class="col-form-label">Código de Barras</label>
-                                    </div>
-                                    <div class="col-10 mb-2">
-                                      <input type="text" formControlName="codigoBarrasPix" id="codigoBarrasPix" class="form-control" aria-describedby="value">
-                                    </div>
-
-                                    <div class="col-2 mb-2">
-                                        <label for="value" class="col-form-label">Descrição</label>
-                                    </div>
-                                    <div class="col-10 mb-2">
-                                        <textarea id="description" formControlName="descricao" class="form-control"
-                                            aria-describedby="description"></textarea>
-                                    </div>
-
-                                </div>
-                                <div class="row justify-content-end">
-                                    <div class="col-auto">
-                                        <button type="submit" [disabled]="invoiceForm.invalid" (click)="registrar()" class="btn btn-info btn-lg">
-                                            <span *ngIf="" class="spinner-border spinner-border-sm me-1"></span>
-                                            <span class="fw-normal text-nowrap">
-                                                <i class="fa-brands fa-wpforms me-2"></i>
-                                            </span>
-                                            Registrar
-                                        </button>
-                                    </div>
-
-                                    <div class="col-2">
-                                        <button (click)="limparFormulario()" class="btn btn-primary btn-lg">
-                                            <span class="fw-normal text-nowrap">
-                                                <i class="fa-solid fa-eraser me-2"></i>
-                                            </span>
-                                            Limpar
-                                        </button>
-                                    </div>
-
-                                    <div class="col-auto">
-                                        <button routerLink="/attendant"  class="btn btn-secondary btn-lg">
-                                            <span class="fw-normal text-nowrap">
-                                                <i class="fa-solid fa-xmark me-2"></i>
-                                            </span>
-                                            Cancelar
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-
+                <div class="col-md-10 mt-4 mb-5">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-3 p-2 mt-3">
+                            <li class="breadcrumb-item"><a routerLink="/dashboard">Menu Principal</a></li>
+                            <li class="breadcrumb-item"><a routerLink="/attendant">Painel Gerador Boleto - PIX /
+                                    Atendente</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Emissão de Boleto de pagamento
+                            </li>
+                        </ol>
+                    </nav>
+                    
+                </div>
+                <div class="card">
+                    <div class="card-body mb-5">
+                        <h5 class="card-title mb-4">
+                            <span class="fw-normal text-nowrap">
+                                <i class="fa-solid fa-barcode me-2"></i>
+                            </span>Emissão de Boletos
+                        </h5>
+                        <div class="alert alert-warning mb-4" role="alert">
+                            <strong>Atenção!</strong>
+                            <p> - Emitir Boleto de pagamento para mesmo dia.<br>
+                                - Não esqueça de colocar o seu final Ex: 499.00<br>
+                                - PIX E BOLETOS EMITIDOS EM PDF</p>
                         </div>
+                        <form [formGroup]="invoiceForm">
+                            <div class="row align-items-center">
+
+                                <div class="col-2 mb-2">
+                                    <label for="nome" class="col-form-label">Nome</label>
+                                </div>
+                                <div class="col-10 mb-2">
+                                    <input type="text" formControlName="nomeCliente" id="nome" class="form-control" aria-describedby="name">
+                                </div>
+
+                                <div class="col-2 mb-2">
+                                    <label for="cpfcnpj" class="col-form-label">CPF/CNPJ</label>
+                                </div>
+                                <div class="col-10 mb-2">
+                                    <input
+                                    type="text"
+                                    formControlName="cpfCnpj"
+                                    mask="000.000.000/0000-0||000.000.000-00"
+                                    id="cpfcnpj" class="form-control"
+                                    aria-describedby="cpfcnpj"
+                                    (focus)="mostrarMensagemErro = false"
+                                    (input)="mostrarMensagemErro = false"
+                                    (blur)="verificarValidade()"
+                                    >
+                                </div>
+                                <div *ngIf="mostrarMensagemErro" class="message fw-light mt-1">
+                                  CPF ou CNPJ inválido.
+                                </div>
+
+                                <div class="col-2 mb-2">
+                                    <label for="date" class="col-form-label">Data Vencimento</label>
+                                </div>
+                                <div class="col-10 mb-2">
+                                    <input type="date" formControlName="dataVencimento" id="date" class="form-control" aria-describedby="date">
+                                </div>
+
+                                <div class="col-2 mb-2">
+                                    <label for="value" class="col-form-label">Valor</label>
+                                </div>
+                                <div class="col-10 mb-2">
+                                    <input type="text" formControlName="valor" id="valor" class="form-control" aria-describedby="value"
+                                        placeholder="0,00">
+                                </div>
+
+                                <div class="col-2 mb-2">
+                                  <label for="value" class="col-form-label">Código de Barras</label>
+                                </div>
+                                <div class="col-10 mb-2">
+                                  <input type="text" formControlName="codigoBarrasPix" id="codigoBarrasPix" class="form-control" aria-describedby="value">
+                                </div>
+
+                                <div class="col-2 mb-2">
+                                    <label for="value" class="col-form-label">Descrição</label>
+                                </div>
+                                <div class="col-10 mb-2">
+                                    <textarea id="description" formControlName="descricao" class="form-control"
+                                        aria-describedby="description"></textarea>
+                                </div>
+
+                            </div>
+                            <div class="row justify-content-end">
+                                <div class="col-auto">
+                                    <button type="submit" [disabled]="invoiceForm.invalid" (click)="registrar()" class="btn btn-info">
+                                        <span *ngIf="" class="spinner-border spinner-border-sm me-1"></span>
+                                        <span class="fw-normal text-nowrap">
+                                            <i class="fa-brands fa-wpforms me-2"></i>
+                                        </span>
+                                        Registrar
+                                    </button>
+                                </div>
+
+                                <div class="col-2">
+                                    <button (click)="limparFormulario()" class="btn btn-primary">
+                                        <span class="fw-normal text-nowrap">
+                                            <i class="fa-solid fa-eraser me-2"></i>
+                                        </span>
+                                        Limpar
+                                    </button>
+                                </div>
+
+                                <div class="col-auto">
+                                    <button routerLink="/attendant"  class="btn btn-secondary">
+                                        <span class="fw-normal text-nowrap">
+                                            <i class="fa-solid fa-xmark me-2"></i>
+                                        </span>
+                                        Cancelar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <app-footer></app-footer>
+</div>
