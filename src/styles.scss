@@ -1,5 +1,6 @@
 $default: #093a5e;
 $title: #020e33;
+$font-size: 14px;
 
 h2 {
     font-size: 18px;
@@ -17,7 +18,8 @@ h2 {
 
 .form-control {
     border-radius: 0;
-    border: solid 1px black;
+    border: solid 1px rgb(68, 68, 68);
+    height: fit-content;
   }
   
   .btn {
@@ -26,6 +28,11 @@ h2 {
 
   .alert {
     border-radius: 0;
+    font-size: 14px;
+  }
+
+  label {
+    font-size: $font-size;
   }
 
 /* Importing Bootstrap SCSS file. */
