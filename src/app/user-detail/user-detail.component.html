@@ -1,22 +1,22 @@
 <app-header></app-header>
-<div class="container-fluid bg-body-secondary bg-gradient vh-100">
-    <div class="row align-items-center">
-        <div class="col-2 bg-primary-subtle vh-100">
+<div class="container-fluid bg-body-secondary bg-gradient v-100">
+    <div class="row vh-100">
+        <div class="col-2 bg-primary-subtle v-100">
             <app-sidebar></app-sidebar>
         </div>
-        <div class="col-10 vh-100">
-            <div class="row justify-content-between m-5">
+        <div class="col-9">
+            <div class="row m-2">
                 <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-3 p-2">
+                    <ol class="breadcrumb mb-3 p-2 mt-3">
                         <li class="breadcrumb-item"><a routerLink="/dashboard">Menu Principal</a></li>
                         <li class="breadcrumb-item"><a routerLink="/users">Usuários</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Atualização de Usuário</li>
                     </ol>
                 </nav>
                 <div *ngIf="user">
-                    <div class="card mt-4">
+                    <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title mb-4">
+                            <h5 class="card-title mb-2">
                                 <span class="fw-normal text-nowrap">
                                     <i class="fa-brands fa-wpforms me-2"></i>
                                 </span>{{title}}
@@ -27,35 +27,67 @@
                                 <p>SELECIONE UM TIPO: USUÁRIO/OPERADOR/ADMINISTRADOR</p>
                             </div>
                             <form [formGroup]="form" (ngSubmit)="onSubmit()">
-                                <div class="mb-3">
-                                    <label for="user-name" class="form-label">Nome</label>
-                                    <input id="user-name" type="text" formControlName="name"  class="form-control" />
+                                <div class="row">
+                                    <div class="col-3">
+                                        <label for="user-name" class="form-label">Nome</label>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <input id="user-name" type="text" formControlName="name" class="form-control" />
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="user-username" class="form-label">Usuário</label>
-                                    <input id="user-username" type="text" formControlName="username" class="form-control" />
+
+                                <div class="row">
+                                    <div class="col-3">
+                                        <label for="user-username" class="form-label">Usuário</label>
+                                    </div>
+                                    <div class="col-6 mb-2">
+
+                                        <input id="user-username" type="text" formControlName="username"
+                                            class="form-control" />
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="user-password" class="form-label">Senha</label>
-                                    <input id="user-password" type="password" formControlName="password"
-                                        class="form-control" />
+
+                                <div class="row">
+                                    <div class="col-3">
+                                        <label for="user-password" class="form-label">Senha</label>
+                                    </div>
+
+                                    <div class="col-6 mb-2">
+
+                                        <input id="user-password" type="password" formControlName="password"
+                                            class="form-control" />
+                                    </div>
                                 </div>
-                                <div class="mb-4">
-                                    <label for="user-finalNumber" class="form-label">Número Final</label>
-                                    <input id="user-finalNumber" type="text" formControlName="finalNumber"
-                                        class="form-control" />
+
+                                <div class="row">
+                                    <div class="col-3">
+                                        <label for="user-finalNumber" class="form-label">Número Final</label>
+                                    </div>
+
+                                    <div class="col-6 mb-2">
+
+                                        <input id="user-finalNumber" type="text" formControlName="finalNumber"
+                                            class="form-control" />
+                                    </div>
                                 </div>
-                                <div class="mb-5">
-                                    <select id="roles" formControlName="roles" class="form-select"
-                                        aria-label="Escolha um tipo">
-                                        <option *ngFor="let roles of eRoles  | keyvalue" [ngValue]="roles.value">{{
-                                            roles.value }}</option>
-                                    </select>
+
+                                <div class="row">
+                                    <div class="col-3">
+                                        <label for="roles" class="form-label">Tipo</label>
+                                    </div>
+
+                                    <div class="col-6 mb-2">
+                                        <select id="roles" formControlName="roles" class="form-select"
+                                            aria-label="Escolha um tipo">
+                                            <option *ngFor="let roles of eRoles  | keyvalue" [ngValue]="roles.value">{{
+                                                roles.value }}</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div>
                                     <div class="row justify-content-start">
                                         <div class="col-2">
-                                            <button [disabled]="" class="btn btn-info btn-lg">
+                                            <button [disabled]="" class="btn btn-info">
                                                 <span *ngIf="" class="spinner-border spinner-border-sm me-1"></span>
                                                 <span class="fw-normal text-nowrap">
                                                     <i class="fa-brands fa-wpforms me-2"></i>
@@ -65,7 +97,7 @@
                                         </div>
 
                                         <div class="col-2">
-                                            <button class="btn btn-primary btn-lg" (click)="clearForm()">
+                                            <button class="btn btn-primary" (click)="clearForm()">
                                                 <span class="fw-normal text-nowrap">
                                                     <i class="fa-solid fa-eraser me-2"></i>
                                                 </span>
@@ -74,7 +106,7 @@
                                         </div>
 
                                         <div class="col-2">
-                                            <button routerLink="/users" class="btn btn-secondary btn-lg">
+                                            <button routerLink="/users" class="btn btn-secondary">
                                                 <span class="fw-normal text-nowrap">
                                                     <i class="fa-solid fa-xmark me-2"></i>
                                                 </span>

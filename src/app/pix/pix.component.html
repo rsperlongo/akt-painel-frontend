@@ -9,92 +9,95 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-3 p-2 mt-3">
                         <li class="breadcrumb-item"><a routerLink="/dashboard">Menu Principal</a></li>
-                        <li class="breadcrumb-item"><a routerLink="/attendant">Painel Gerador Boleto - PIX / Atendente</a></li>
+                        <li class="breadcrumb-item"><a routerLink="/attendant">Painel Gerador Boleto - PIX /
+                                Atendente</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Emissão de Pix para Pagamento
                         </li>
                     </ol>
                 </nav>
-                <div class="col-9">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title mb-4">
-                                <span class="fw-normal text-nowrap">
-                                    <i class="fa-solid fa-qrcode me-2"></i>
-                                </span>Emissão de PIX
-                            </h5>
-                            <div class="alert alert-warning mb-4" role="alert">
-                                <strong>Atenção!</strong>
-                                <p> - Emitir Boleto de pagamento para mesmo dia.<br>
-                                    - Não esqueça de colocar o seu final Ex: 499.00<br>
-                                    - PIX EMITIDOS EM PDF</p>
-                            </div>
-                            <form [formGroup]="pixForm" (ngSubmit)="createPix()">
-                                <div class="row align-items-center">
-
-                                    <div class="col-2 mb-2">
-                                        <label for="nome" class="col-form-label">Nome</label>
-                                    </div>
-                                    <div class="col-10 mb-2">
-                                        <input type="text" id="nome" class="form-control" aria-describedby="name" formControlName="nome">
-                                    </div>
-
-                                    <div class="col-2 mb-2">
-                                        <label for="cpfcnpj" class="col-form-label">Cidade</label>
-                                    </div>
-                                    <div class="col-10 mb-2">
-                                        <input type="text" id="cidade" class="form-control" aria-describedby="cidade" formControlName="cidade">
-                                    </div>
-
-                                    <div class="col-2 mb-2">
-                                        <label for="date" class="col-form-label">Chave Pix</label>
-                                    </div>
-                                    <div class="col-10 mb-2">
-                                        <input type="text" id="chave" class="form-control" aria-describedby="chave" formControlName="chave">
-                                    </div>
-
-                                    <div class="col-2 mb-2">
-                                        <label for="value" class="col-form-label">Valor</label>
-                                    </div>
-                                    <div class="col-10 mb-2">
-                                        <input type="text" id="valor" class="form-control" aria-describedby="value" mask="000000,00" placeholder="0,00" >
-                                    </div>
-
-                                </div>
-                                <div class="row justify-content-end">
-                                    <div class="col-auto">
-                                        <button [disabled]="" class="btn btn-info">
-                                            <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
-                                            <span class="fw-normal text-nowrap">
-                                                <i class="fa-brands fa-wpforms me-2"></i>
-                                            </span>
-                                            Registrar
-                                        </button>
-                                    </div>
-
-                                    <div class="col-2">
-                                        <button class="btn btn-primary">
-                                            <span class="fw-normal text-nowrap">
-                                                <i class="fa-solid fa-eraser me-2"></i>
-                                            </span>
-                                            Limpar
-                                        </button>
-                                    </div>
-
-                                    <div class="col-auto">
-                                        <button routerLink="/attendant"  class="btn btn-secondary">
-                                            <span class="fw-normal text-nowrap">
-                                                <i class="fa-solid fa-xmark me-2"></i>
-                                            </span>
-                                            Cancelar
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">
+                            <span class="fw-normal text-nowrap">
+                                <i class="fa-solid fa-qrcode me-2"></i>
+                            </span>Emissão de PIX
+                        </h5>
+                        <div class="alert alert-warning mb-4" role="alert">
+                            <strong>Atenção!</strong>
+                            <p> - Emitir Boleto de pagamento para mesmo dia.<br>
+                                - Não esqueça de colocar o seu final Ex: 499.00<br>
+                                - PIX EMITIDOS EM PDF</p>
                         </div>
+                        <form [formGroup]="pixForm" (ngSubmit)="createPix()">
+                            <div class="row align-items-center">
+
+                                <div class="col-2 mb-2">
+                                    <label for="nome" class="col-form-label">Nome</label>
+                                </div>
+                                <div class="col-10 mb-2">
+                                    <input type="text" id="nome" class="form-control" aria-describedby="name"
+                                        formControlName="nome">
+                                </div>
+
+                                <div class="col-2 mb-2">
+                                    <label for="cpfcnpj" class="col-form-label">Cidade</label>
+                                </div>
+                                <div class="col-10 mb-2">
+                                    <input type="text" id="cidade" class="form-control" aria-describedby="cidade"
+                                        formControlName="cidade">
+                                </div>
+
+                                <div class="col-2 mb-2">
+                                    <label for="date" class="col-form-label">Chave Pix</label>
+                                </div>
+                                <div class="col-10 mb-2">
+                                    <input type="text" id="chave" class="form-control" aria-describedby="chave"
+                                        formControlName="chave">
+                                </div>
+
+                                <div class="col-2 mb-2">
+                                    <label for="value" class="col-form-label">Valor</label>
+                                </div>
+                                <div class="col-10 mb-2">
+                                    <input type="text" id="valor" class="form-control" aria-describedby="value"
+                                        mask="000000,00" placeholder="0,00">
+                                </div>
+
+                            </div>
+                            <div class="row justify-content-end">
+                                <div class="col-auto">
+                                    <button [disabled]="" class="btn btn-info">
+                                        <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                                        <span class="fw-normal text-nowrap">
+                                            <i class="fa-brands fa-wpforms me-2"></i>
+                                        </span>
+                                        Registrar
+                                    </button>
+                                </div>
+
+                                <div class="col-2">
+                                    <button class="btn btn-primary">
+                                        <span class="fw-normal text-nowrap">
+                                            <i class="fa-solid fa-eraser me-2"></i>
+                                        </span>
+                                        Limpar
+                                    </button>
+                                </div>
+
+                                <div class="col-auto">
+                                    <button routerLink="/attendant" class="btn btn-secondary">
+                                        <span class="fw-normal text-nowrap">
+                                            <i class="fa-solid fa-xmark me-2"></i>
+                                        </span>
+                                        Cancelar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
-
