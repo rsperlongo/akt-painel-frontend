@@ -1,24 +1,23 @@
-$default: #093a5e;
-$title: #020e33;
-$font-size: 14px;
+@import 'variables.scss';
+
 
 h2 {
     font-size: 18px;
     font-weight: bold;
-    color: rgb(8, 65, 119);
+    color: $color-1
 }
 
 .card {
-    border: solid 1px rgba(212, 211, 224, 0.664);
+    border: solid 1px $card-1;
     border-radius: 0;
-    box-shadow: 0 0.5rem 1rem rgb(240, 231, 231);
+    box-shadow: 0 0.5rem 1rem $card-2;
     height: fit-content;
     background-color: white;
 }
 
 .form-control {
     border-radius: 0;
-    border: solid 1px rgb(68, 68, 68);
+    border: solid 1px $form-1;
     height: fit-content;
   }
   

@@ -1,5 +1,4 @@
 @import "../../styles.scss";
-@import "../../variables";
 
 .card {
     border: solid 1px rgb(138, 137, 137);
@@ -12,9 +11,9 @@
 
 .form-control {
     border-radius: 0;
-    border: solid 1px rgb(138, 137, 137);
+    border: solid 1px $color-3;
 }
 
 .message {
-    color: rgb(238, 63, 63);
+    color: $alert;
 }
